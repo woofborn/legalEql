@@ -35,7 +35,7 @@ module.exports = (db) => {
 
                 }
 
-                response.redirect(`/projects/${project.id}`)
+                response.redirect(`/projects/${project.name}`)
 
             })
         }
@@ -43,7 +43,7 @@ module.exports = (db) => {
         let projectControllerCallback = (request,response)=>{
 
         // db.lawyers.verifyLogin(request,(err,result)=>{
-            response.send(`this is project number ${request.params.id}`)
+            response.send(`this is project number ${request.params.name}`)
 
 
         // })
