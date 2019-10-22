@@ -13,7 +13,7 @@ class Addproject extends React.Component {
                 <form method="POST" action="/projects">
                     <div className="form-group">
                         <label>Project name: </label>
-                        <input className="form-control form-control-lg" type="text" placeholder="e.g. Project Deathstar" name="name" required/>
+                        <input className="form-control form-control-lg" type="text" placeholder="Type project name." name="name" style={{textTransform: "capitalize"}} required/>
                     </div>
 
                     <input type="submit" className="btn btn-danger" value="Add project"/>

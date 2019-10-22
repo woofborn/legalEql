@@ -24,8 +24,9 @@ module.exports = (dbPoolInstance) => {
         console.log(request.body)
 
         let project = request.body.name
+        let upper = project.charAt(0).toUpperCase()+project.substring(1);
 
-        let query = `INSERT INTO projects (name) VALUES ('${request.body.name}') RETURNING *`;
+        let query = `INSERT INTO projects (name) VALUES ('${upper}') RETURNING *`;
         console.log(query)
 
         dbPoolInstance.query(query,(err,result)=>{
