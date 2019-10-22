@@ -53,7 +53,13 @@ module.exports = (db) => {
     let associatesControllerCallback = (request,response)=>{
 
          db.lawyers.associates(request,(associates)=>{
-                 response.send(associates)
+                 // response.send(associates)\
+
+                 const info = {
+                    associates,
+                 }
+
+                 response.render('associates',info)
             })
     }
 
