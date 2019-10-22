@@ -16,7 +16,7 @@ class Layout extends React.Component {
                 <body>
                     <div className="container">
 
-                        <nav className="navbar navbar-expand-lg" style = {{backgroundColor: "#0b97b0"}}>
+                        <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
                             <span className="navbar-brand">ALW</span>
                             <ul className="nav mr-auto mt-lg-0">
                                 <li className="nav-item">
@@ -27,7 +27,7 @@ class Layout extends React.Component {
                                 </li>
 
                                 <li className="nav-item">
-                                    <a className="nav-link" href="#">Profile</a>
+                                    <a className="nav-link" href="#">Projects</a>
                                 </li>
 
                             </ul>

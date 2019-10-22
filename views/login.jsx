@@ -17,7 +17,7 @@ class Login extends React.Component {
                 <h1>WELCOME TO ANG, LOH AND WONG LLP</h1>
 
                 <h2> Please login.</h2>
-                <form method="POST" action="/login">
+                <form method="POST" action="/partner">
                     <div className="form-group">
                         <label>Username: </label>
                         <input className="form-control form-control-lg" type="text" placeholder="username" name="username" required/>

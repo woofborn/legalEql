@@ -16,7 +16,9 @@ module.exports = (app, allModels) => {
 
   app.get('/login', ControllerCallbacks.login);
 
-  app.post('/login', ControllerCallbacks.verify);
+  app.post('/partner', ControllerCallbacks.verify);
 
+  app.post('/projects', ControllerCallbacks.newProject);
 
+  // app.get('/projects/:id', ControllerCallbacks.project);
 }

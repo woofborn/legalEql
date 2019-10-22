@@ -4,15 +4,15 @@ module.exports = (dbPoolInstance) => {
 
         let user = request.body.username
         let pw = request.body.password
-
+        console.log(request.body)
 
         let query = `SELECT * FROM lawyers WHERE username = '${user}' AND password = '${pw}'`;
         console.log(query)
 
         dbPoolInstance.query(query,(err,result)=>{
-            console.log(result.rows)
 
             if (result.rows.length>0){
+                console.log(result.rows[0])
                 callback(null,result.rows[0])
             } else {
                 callback(null,null);
@@ -20,7 +20,23 @@ module.exports = (dbPoolInstance) => {
         });
     }
 
+    let newProject = (request,callback)=>{
+        console.log(request.body)
+
+        let project = request.body.name
+
+        let query = `INSERT INTO projects (name) VALUES ('${request.body.name}') RETURNING *`;
+        console.log(query)
+
+        dbPoolInstance.query(query,(err,result)=>{
+            console.log('new project insertion' + result.rows[0].id, result.rows[0].name, result.rows[0])
+            callback(result.rows[0])
+        })
+
+    }
+
     return{
         verifyLogin,
+        newProject
     }
 }
