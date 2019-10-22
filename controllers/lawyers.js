@@ -11,7 +11,7 @@ module.exports = (db) => {
         db.lawyers.verifyLogin(request,(err,result)=>{
 
             if (result != null) {
-                response.cookie('username',result.username)
+                response.cookie('name', result.name)
                 response.cookie('id',result.id)
 
                 const info = {
@@ -40,20 +40,29 @@ module.exports = (db) => {
             })
         }
 
-        let projectControllerCallback = (request,response)=>{
+    let projectControllerCallback = (request,response)=>{
 
-        // db.lawyers.verifyLogin(request,(err,result)=>{
-            response.send(`this is project number ${request.params.name}`)
+        const info = {
+            name: request.params.name,
+             partner: request.cookies.name
+        }
+        response.render('project', info)
 
+    }
 
-        // })
+    let associatesControllerCallback = (request,response)=>{
+
+         db.lawyers.associates(request,(associates)=>{
+                 response.send(associates)
+            })
     }
 
   return {
     login: loginControllerCallback,
     verify: verifyControllerCallback,
     newProject: newProjectControllerCallback,
-    project: projectControllerCallback
+    project: projectControllerCallback,
+    associates: associatesControllerCallback
   }
 
 }

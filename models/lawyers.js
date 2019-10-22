@@ -33,11 +33,23 @@ module.exports = (dbPoolInstance) => {
             console.log('new project insertion' + result.rows[0].id, result.rows[0].name, result.rows[0])
             callback(result.rows[0])
         })
+    }
+
+    let associates = (request,callback)=>{
+        let query = `SELECT * FROM lawyers WHERE is_partner = false `;
+        console.log(query)
+
+        dbPoolInstance.query(query,(err,result)=>{
+            console.log('associates:' + result.rows)
+            callback(result.rows)
+        })
 
     }
 
+
     return{
         verifyLogin,
-        newProject
+        newProject,
+        associates
     }
 }

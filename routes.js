@@ -18,6 +18,8 @@ module.exports = (app, allModels) => {
 
   app.post('/partner', ControllerCallbacks.verify);
 
+  app.get('/associates', ControllerCallbacks.associates);
+
   app.post('/projects', ControllerCallbacks.newProject);
 
   app.get('/projects/:name', ControllerCallbacks.project);

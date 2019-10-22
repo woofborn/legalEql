@@ -1,6 +1,6 @@
 var React = require("react");
 var Layout = require('./layout');
-var Newproject = require('./addproject')
+
 
 class Partner extends React.Component {
   render() {
@@ -10,11 +10,20 @@ class Partner extends React.Component {
 
     return (
       <Layout>
-        <h1> Project {this.props.name}! </h1>
+        <h1> Project {this.props.name} Overview </h1>
         <br/>
-        <h2> Your projects: </h2>
 
-        <div>. </div>
+        <form method="GET" action="/associates">
+            <input type="submit" className="btn btn-danger" value="Add team members"/>
+        </form>
+
+        <h4> Deal team: </h4>
+            <ol>
+                <li>{this.props.partner}</li>
+
+            </ol>
+
+        <div> </div>
 
 
 
