@@ -6,11 +6,6 @@ class Addproject extends React.Component {
     render() {
 
 
-        let fail = ""
-        if (this.props.fail === true){
-            fail =  <h3 style = {{color:"red"}}>Log in failed. Please try again.</h3>
-        }
-
         return (
 
 

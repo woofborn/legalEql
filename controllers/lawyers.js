@@ -32,17 +32,28 @@ module.exports = (db) => {
                 const info = {
                     id: project.id,
                     name: project.name,
+
                 }
 
-                response.send('added project '+project.name)
+                response.redirect(`/projects/${project.id}`)
 
             })
         }
 
+        let projectControllerCallback = (request,response)=>{
+
+        // db.lawyers.verifyLogin(request,(err,result)=>{
+            response.send(`this is project number ${request.params.id}`)
+
+
+        // })
+    }
+
   return {
     login: loginControllerCallback,
     verify: verifyControllerCallback,
-    newProject: newProjectControllerCallback
+    newProject: newProjectControllerCallback,
+    project: projectControllerCallback
   }
 
 }
