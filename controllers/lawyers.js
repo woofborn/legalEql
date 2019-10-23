@@ -64,12 +64,11 @@ module.exports = (db) => {
         }
 
     let projectControllerCallback = (request,response)=>{
-       console.log(request.params.name)
+
        let project = request.params.name
 
         db.lawyers.allTeam(project,(team)=>{
-            console.log('///////////')
-            console.log(team)
+
             const info = {
                 name: request.params.name,
                 partner: request.cookies.name,
@@ -81,12 +80,10 @@ module.exports = (db) => {
     }
 
     let associatesControllerCallback = (request,response)=>{
-        console.log("///////////////////")
-        console.log(request.params)
-        console.log("///////////////////")
+
         let projectName = request.params.projectname
          db.lawyers.associates(request,(associates)=>{
-                 // response.send(associates)
+                 console.log(associates)
                  const info = {
                     associates,
                     projectName

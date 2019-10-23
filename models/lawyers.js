@@ -30,7 +30,12 @@ module.exports = (dbPoolInstance) => {
 
 
     let associates = (request,callback)=>{
-        let query = `SELECT * FROM associates`;
+
+          // let query = `select associate_id,count(associate_id) from project_assignment group by associate_id`;
+
+        // let query = `SELECT associates.id, associates.aname,associates.area,associates.location FROM associates LEFT JOIN (SELECT associate_id,count(associate_id)  FROM project_assignment GROUP BY associate_id) AS count ON (count.associate_id = associates.id) WHERE count<3`;
+
+        let query = `SELECT associates.id, associates.aname,associates.area,associates.location FROM associates LEFT JOIN (SELECT result.id, count(result.id) FROM (SELECT associates.id, associates.aname,associates.area,associates.location, project_assignment.project_name FROM associates LEFT JOIN project_assignment ON (project_assignment.associate_id = associates.id)) AS result GROUP BY result.id ) as bigResult ON (bigResult.id = associates.id) WHERE bigResult.count<3`
         console.log(query)
 
         dbPoolInstance.query(query,(err,result)=>{
