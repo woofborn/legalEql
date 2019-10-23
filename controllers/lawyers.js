@@ -101,7 +101,20 @@ module.exports = (db) => {
             console.log("!!!RETURNED FROM NULL?")
             console.log(team)
             if (team === null){
-                response.send ("you've already added this associate, dingbat")
+                // response.send ("you've already added this associate, dingbat")
+                let projectName = request.body.project_associateid[0]
+                console.log(request.params.projectname)
+
+                db.lawyers.associates(request,(associates)=>{
+                 // response.send(associates)
+                     const info = {
+                        associates,
+                        projectName,
+                        selected:true
+                     }
+                 response.render('associates',info)
+                })
+
             } else {
 
                 db.lawyers.nameAssociate(request,(name)=>{
