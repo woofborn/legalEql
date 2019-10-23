@@ -34,9 +34,18 @@ module.exports = (db) => {
         })
     }
 
+    let logoutControllerCallback = (request,response)=>{
+        response.clearCookie('id');
+        response.clearCookie('loggedin');
+        response.clearCookie('name');
+
+        response.redirect('/login')
+    }
+
   return {
     login: loginControllerCallback,
     verify: verifyControllerCallback,
+    logout: logoutControllerCallback
 
   }
 

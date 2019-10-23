@@ -10,3 +10,11 @@ INSERT INTO associates (aname, area,location) VALUES ('Wilfred', 'Oil & Gas','Si
 INSERT INTO associates (aname, area,location) VALUES ('Terence', 'Construction','Singapore');
 INSERT INTO associates (aname, area,location) VALUES ('Jasmine', 'Shipping','Singapore');
 INSERT INTO associates (aname, area,location) VALUES ('Ryan', 'Power','Singapore');
+INSERT INTO associates (aname, area,location) VALUES ('Garrick', 'Corporate','Singapore');
+
+INSERT INTO associates (aname, area, location) VALUES ('Eugene', 'Finance','Hong Kong');
+INSERT INTO associates (aname, area,location) VALUES ('Kelly', 'Oil & Gas','Hong Kong');
+INSERT INTO associates (aname, area,location) VALUES ('Brandon', 'Construction','Hong Kong');
+INSERT INTO associates (aname, area,location) VALUES ('Kevin', 'Shipping','Hong Kong');
+INSERT INTO associates (aname, area,location) VALUES ('Eden', 'Power','Hong Kong');
+INSERT INTO associates (aname, area,location) VALUES ('Sharon', 'Corporate','Hong Kong');

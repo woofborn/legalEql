@@ -30,6 +30,10 @@ class Layout extends React.Component {
                                     <a className="nav-link" href="http://localhost:3000/projects">My Projects</a>
                                 </li>
 
+                                <form method="GET" action="/logout" className="mr-3">
+                                    <input type="submit" className="btn btn-outline-primary" value="logout"/>
+                                </form>
+
                             </ul>
 
                         </nav>
