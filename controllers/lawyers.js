@@ -29,13 +29,18 @@ module.exports = (db) => {
      let newProjectControllerCallback = (request,response)=>{
 
             db.lawyers.newProject(request,(project)=>{
-                console.log('newproject' + project.id, project.name)
-                const info = {
-                    id: project.id,
-                    name: project.name,
 
+                if (project === null){
+                    response.send("Be more creative - that one's been taken.")
+                } else {
+                    console.log('newproject' + project.id, project.name)
+                    const info = {
+                        id: project.id,
+                        name: project.name,
+
+                    }
+                    response.redirect(`/projects/${project.name}`)
                 }
-                response.redirect(`/projects/${project.name}`)
             })
         }
 

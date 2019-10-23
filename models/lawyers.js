@@ -26,14 +26,27 @@ module.exports = (dbPoolInstance) => {
         let project = request.body.name
         let upper = project.charAt(0).toUpperCase()+project.substring(1);
 
-        let query = `INSERT INTO projects (name) VALUES ('${upper}') RETURNING *`;
-        console.log(query)
+       let query = `SELECT * FROM projects WHERE name = '${project}'`
+       console.log(query)
 
         dbPoolInstance.query(query,(err,result)=>{
-            console.log('new project insertion' + result.rows[0].id, result.rows[0].name, result.rows[0])
-            callback(result.rows[0])
+
+            if (result.rows[0].name === project){
+                 // response.send("Be more creative - that one's been taken.")
+                 callback(null)
+            } else {
+
+                let query = `INSERT INTO projects (name) VALUES ('${upper}') RETURNING *`;
+
+                    dbPoolInstance.query(query,(err,result)=>{
+
+                    console.log (result.rows[0])
+                    callback(result.rows[0])
+                })
+            }
         })
     }
+
 
     let associates = (request,callback)=>{
         let query = `SELECT * FROM associates`;
