@@ -24,5 +24,5 @@ module.exports = (app, allModels) => {
 
   app.get('/projects/:name', ControllerCallbacks.project);
 
-  app.post('/projects/:name', ControllerCallbacks.addTeam)
+  app.post('/projects/:name/newmember', ControllerCallbacks.addTeam)
 }

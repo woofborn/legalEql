@@ -15,7 +15,7 @@ class Partner extends React.Component {
         <br/>
 
 
-            <a type="submit" className="btn btn-danger" value="Add team members" href={"/associates/" + this.props.name}></a>
+            <a type="submit" className="btn btn-danger" value="Add team members" href={"/associates/" + this.props.name}>Add team members</a>
 
 
 

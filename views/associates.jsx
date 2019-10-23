@@ -16,7 +16,7 @@ class Associates extends React.Component {
                                         <div> location/area of focus/whatever
                                         </div>
                                         <br/>
-                                         <form method="POST" action={"/projects/"+this.props.projectName}>
+                                         <form method="POST" action={"/projects/"+this.props.projectName+"/newmember"}>
                                          <input type="submit" className="btn btn-light" value="Add to team"></input>
                                          <input type = "hidden" name="project_associateid[]"value = {this.props.projectName}></input>
                                          <input type = "hidden" name="project_associateid[]" value= {associate.id}></input>

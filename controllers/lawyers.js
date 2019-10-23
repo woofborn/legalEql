@@ -65,16 +65,16 @@ module.exports = (db) => {
     }
 
     let addTeamControllerCallback = (request,response)=>{
-        console.log("TQQTQTQTQTQTQ")
-        console.log(request.body)
 
         db.lawyers.addTeam(request,(team)=>{
 
             const info = {
-                project: request.params.projectname
+                associate: team.associate_id,
+                project:team.project_name
             }
-
-            response.send(team)
+            console.log('MEOWMOEMOWMOEWEWOM')
+            console.log(team)
+            response.render('newmember',info)
         })
 
     }
