@@ -6,6 +6,13 @@ module.exports = (db) => {
         response.render('login')
     };
 
+    let partnerControllerCallback = (request,response)=>{
+        const data = {
+            name: request.cookies.name
+        }
+        response.render('partner',data)
+    }
+
     let verifyControllerCallback = (request,response)=>{
 
         db.lawyers.verifyLogin(request,(err,result)=>{
@@ -31,7 +38,13 @@ module.exports = (db) => {
             db.lawyers.newProject(request,(project)=>{
 
                 if (project === null){
-                    response.send("Be more creative - that one's been taken.")
+                    // response.send("Be more creative - that one's been taken.")
+                    const data = {
+                        unique: false,
+                        name: request.cookies.name
+                    }
+                    response.render('partner',data)
+
                 } else {
                     console.log('newproject' + project.id, project.name)
                     const info = {
@@ -103,7 +116,8 @@ module.exports = (db) => {
     newProject: newProjectControllerCallback,
     project: projectControllerCallback,
     associates: associatesControllerCallback,
-    addTeam: addTeamControllerCallback
+    addTeam: addTeamControllerCallback,
+    partnerPage: partnerControllerCallback
   }
 
 }

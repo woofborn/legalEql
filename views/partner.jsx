@@ -6,7 +6,10 @@ var Newproject = require('./addproject')
 class Partner extends React.Component {
   render() {
 
-
+ let unique = ""
+        if (this.props.unique === false){
+            unique =  <h3 style = {{color:"red"}}>Be more creative - that one's been taken.</h3>
+        }
 
 
     return (
@@ -20,6 +23,8 @@ class Partner extends React.Component {
         <h2> Add new project: </h2>
 
         <Newproject/>
+
+        <h3>{unique}</h3>
 
 
 
