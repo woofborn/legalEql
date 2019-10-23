@@ -98,17 +98,23 @@ module.exports = (db) => {
     let addTeamControllerCallback = (request,response)=>{
 
         db.lawyers.addTeam(request,(team)=>{
-
-            db.lawyers.nameAssociate(request,(name)=>{
-                const info = {
-                associate: name.aname,
-                project:team.project_name
-            }
-            console.log('MEOWMOEMOWMOEWEWOM')
+            console.log("!!!RETURNED FROM NULL?")
             console.log(team)
-            console.log(name)
-            response.render('newmember',info)
-            })
+            if (team === null){
+                response.send ("you've already added this associate, dingbat")
+            } else {
+
+                db.lawyers.nameAssociate(request,(name)=>{
+                    const info = {
+                    associate: name.aname,
+                    project:team.project_name
+                    }
+                    response.render('newmember',info)
+                })
+
+            }
+
+
         })
     }
 

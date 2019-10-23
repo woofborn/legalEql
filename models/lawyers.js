@@ -34,24 +34,37 @@ module.exports = (dbPoolInstance) => {
         console.log(query)
 
         dbPoolInstance.query(query,(err,result)=>{
-            console.log('associates:' + result.rows)
+
             callback(result.rows)
         })
     }
 
 
     let addTeam = (request,callback)=>{
-
+        console.log("REQUESTBODY!!!")
+        console.log(request.body)
         let project = request.body.project_associateid[0]
         let partner = request.cookies.id;
         let associate = request.body.project_associateid[1]
 
-        let query = `INSERT INTO project_assignment (partner_id, associate_id, project_name) VALUES (${partner}, ${associate},'${project}') RETURNING *`
-        console.log(query)
+        let query = `SELECT * FROM project_assignment WHERE project_name = '${project}' AND associate_id = ${associate}`
+
 
         dbPoolInstance.query(query,(err,result)=>{
-            console.log(result.rows[0])
-            callback(result.rows[0])
+            console.log("///RESULT OF ASSOCIATE SEARCH///")
+            console.log(result.rows)
+
+            if (result.rows.length>0){
+                callback(null)
+            } else {
+                let query = `INSERT INTO project_assignment (partner_id, associate_id, project_name) VALUES (${partner}, ${associate},'${project}') RETURNING *`
+                console.log(query)
+
+                dbPoolInstance.query(query,(err,result)=>{
+                    console.log(result.rows[0])
+                    callback(result.rows[0])
+                })
+            }
         })
     }
 
