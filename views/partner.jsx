@@ -5,22 +5,25 @@ var Newproject = require('./addproject')
 
 class Partner extends React.Component {
   render() {
+
     let projects = "None!"
 
-        if (this.props.projectList != undefined){
+        console.log("RAWRAWRAWRAWRAWRAWRAW")
+        console.log(this.props.projectList)
 
-             projects = this.props.projectList.map((project,i)=>{
+    if (this.props.projectList.length>0){
 
-                 return <li key = {i}>{project.project_name}</li>
-                 })
-        }
+        projects = this.props.projectList.map((project,i)=>{
+             return <li key = {i}>{project.project_name}</li>
+             })
+    }
+
 
         let unique;
 
          if (this.props.unique === false){
                 unique =  <h3 style = {{color:"red"}}>Be more creative - that one's been taken.</h3>
         }
-
 
     return (
       <Layout>

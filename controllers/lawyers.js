@@ -29,14 +29,12 @@ module.exports = (db) => {
     let partnerControllerCallback = (request,response)=>{
 
          db.lawyers.allProjects(request,(name)=>{
-            console.log('!!!!!!!!!!!!!!!')
-            console.log(name)
+
             const data = {
                 projectList: name,
                 name: request.cookies.name
             }
-            console.log("$$$$$$$$$$")
-            console.log(data.projectList)
+
             response.render('partner',data)
         })
     }
@@ -48,6 +46,7 @@ module.exports = (db) => {
                 if (project === null){
 
                       db.lawyers.allProjects(request,(name)=>{
+
                             const data = {
                                 projectList: name,
                                 name: request.cookies.name,
