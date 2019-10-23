@@ -6,13 +6,6 @@ module.exports = (db) => {
         response.render('login')
     };
 
-    let partnerControllerCallback = (request,response)=>{
-        const data = {
-            name: request.cookies.name
-        }
-        response.render('partner',data)
-    }
-
     let verifyControllerCallback = (request,response)=>{
 
         db.lawyers.verifyLogin(request,(err,result)=>{
@@ -26,10 +19,25 @@ module.exports = (db) => {
                     name: result.pname
                 }
 
-                response.render('partner', info)
+                response.redirect('/projects')
             } else {
                 response.send('nope')
             }
+        })
+    }
+
+    let partnerControllerCallback = (request,response)=>{
+
+         db.lawyers.allProjects(request,(name)=>{
+            console.log('!!!!!!!!!!!!!!!')
+            console.log(name)
+            const data = {
+                projectList: name,
+                name: request.cookies.name
+            }
+            console.log("$$$$$$$$$$")
+            console.log(data.projectList)
+            response.render('partner',data)
         })
     }
 
@@ -38,12 +46,16 @@ module.exports = (db) => {
             db.lawyers.newProject(request,(project)=>{
 
                 if (project === null){
-                    // response.send("Be more creative - that one's been taken.")
-                    const data = {
-                        unique: false,
-                        name: request.cookies.name
-                    }
-                    response.render('partner',data)
+
+                      db.lawyers.allProjects(request,(name)=>{
+                            const data = {
+                                projectList: name,
+                                name: request.cookies.name,
+                                unique: false,
+                            }
+
+                        response.render('partner',data)
+                      })
 
                 } else {
                     console.log('newproject' + project.id, project.name)
@@ -102,13 +114,19 @@ module.exports = (db) => {
             console.log(team)
             console.log(name)
             response.render('newmember',info)
-
-
             })
-
         })
-
     }
+
+    // let allProjectsControllerCallback = (request,response)=>{
+
+    //     db.lawyers.allProjects(request,(name)=>{
+    //         const data = {
+    //             projectList: result.rows
+    //         }
+
+    //     })
+    // }
 
   return {
     login: loginControllerCallback,

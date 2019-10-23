@@ -4,7 +4,10 @@ const Layout = require('./layout');
 
 class Addproject extends React.Component {
     render() {
-
+        let unique;
+         if (this.props.unique === false){
+                unique =  <h3 style = {{color:"red"}}>Be more creative - that one's been taken.</h3>
+            }
 
         return (
 
@@ -18,6 +21,7 @@ class Addproject extends React.Component {
 
                     <input type="submit" className="btn btn-danger" value="Add project"/>
                 </form>
+                <h3>{unique}</h3>
             </div>
 
 

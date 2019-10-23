@@ -27,7 +27,7 @@ class Layout extends React.Component {
                                 </li>
 
                                 <li className="nav-item">
-                                    <a className="nav-link" href="#">Projects</a>
+                                    <a className="nav-link" href="http://localhost:3000/projects">My Projects</a>
                                 </li>
 
                             </ul>

@@ -31,7 +31,7 @@ module.exports = (dbPoolInstance) => {
 
         dbPoolInstance.query(query,(err,result)=>{
 
-            if (result.rows[0].name === project){
+            if (result.rows[0] != undefined && result.rows[0].name === project){
                  // response.send("Be more creative - that one's been taken.")
                  callback(null)
             } else {
@@ -101,6 +101,17 @@ module.exports = (dbPoolInstance) => {
         })
     }
 
+    let allProjects = (request,callback)=>{
+        let partnerId = request.cookies.id
+
+        let query = `SELECT DISTINCT project_name FROM project_assignment WHERE partner_id = ${partnerId}`
+
+        dbPoolInstance.query(query,(err,result)=>{
+            callback(result.rows)
+        })
+
+    }
+
 
     return{
         verifyLogin,
@@ -108,7 +119,7 @@ module.exports = (dbPoolInstance) => {
         associates,
         addTeam,
         nameAssociate,
-        allTeam
-
+        allTeam,
+        allProjects
     }
 }
