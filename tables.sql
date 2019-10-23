@@ -1,9 +1,15 @@
-CREATE TABLE IF NOT EXISTS lawyers (
+CREATE TABLE IF NOT EXISTS partners (
 	id SERIAL PRIMARY KEY,
 	name TEXT,
 	username TEXT,
-	password TEXT,
-	is_partner BOOLEAN
+	password TEXT
+);
+
+CREATE TABLE IF NOT EXISTS associates(
+	id SERIAL PRIMARY KEY,
+	name TEXT,
+	area TEXT,
+	location TEXT
 );
 
 CREATE TABLE IF NOT EXISTS projects (

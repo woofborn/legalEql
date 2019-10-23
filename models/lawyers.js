@@ -6,7 +6,7 @@ module.exports = (dbPoolInstance) => {
         let pw = request.body.password
         console.log(request.body)
 
-        let query = `SELECT * FROM lawyers WHERE username = '${user}' AND password = '${pw}'`;
+        let query = `SELECT * FROM partners WHERE username = '${user}' AND password = '${pw}'`;
         console.log(query)
 
         dbPoolInstance.query(query,(err,result)=>{
@@ -36,7 +36,7 @@ module.exports = (dbPoolInstance) => {
     }
 
     let associates = (request,callback)=>{
-        let query = `SELECT * FROM lawyers WHERE is_partner = false `;
+        let query = `SELECT * FROM associates`;
         console.log(query)
 
         dbPoolInstance.query(query,(err,result)=>{
@@ -47,11 +47,9 @@ module.exports = (dbPoolInstance) => {
 
     let addTeam = (request,callback)=>{
 
-         let project = request.body.project_associateid[0]
-          let partner = request.cookies.id;
-          let associate = request.body.project_associateid[1]
-
-
+        let project = request.body.project_associateid[0]
+        let partner = request.cookies.id;
+        let associate = request.body.project_associateid[1]
 
         let query = `INSERT INTO project_assignment (partner_id, associate_id, project_name) VALUES (${partner}, ${associate},'${project}') RETURNING *`
         console.log(query)
@@ -62,11 +60,25 @@ module.exports = (dbPoolInstance) => {
         })
     }
 
+    let allTeam = (project,callback)=>{
+        // let project = request.params.name;
+        console.log(project)
+
+        let query = `SELECT * FROM project_assignment WHERE project_name = '${project}'`
+        console.log(query)
+
+        dbPoolInstance.query(query,(err,result)=>{
+            console.log(result.rows);
+            callback(result.rows)
+        })
+    }
+
 
     return{
         verifyLogin,
         newProject,
         associates,
-        addTeam
+        addTeam,
+        allTeam
     }
 }

@@ -39,12 +39,23 @@ module.exports = (db) => {
         }
 
     let projectControllerCallback = (request,response)=>{
+       console.log(request.params.name)
+       let project = request.params.name
 
-        const info = {
+        db.lawyers.allTeam(project,(team)=>{
+
+            const info = {
             name: request.params.name,
-             partner: request.cookies.name
+             partner: request.cookies.name,
+             team
             }
         response.render('project', info)
+        // response.send(team)
+
+
+        })
+
+
 
     }
 
