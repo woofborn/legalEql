@@ -11,6 +11,11 @@ class Login extends React.Component {
             fail =  <h3 style = {{color:"red"}}>Log in failed. Please try again.</h3>
         }
 
+         let login = ""
+        if (this.props.login === false){
+            fail =  <h3 style = {{color:"red"}}>Please login to access projects page.</h3>
+        }
+
         return (
              <Layout>
 
@@ -32,6 +37,7 @@ class Login extends React.Component {
                 </form>
                 <br/>
                 <h3>{fail}</h3>
+                <h3>{login}</h3>
             </Layout>
 
         );

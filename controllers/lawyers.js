@@ -5,21 +5,29 @@ module.exports = (db) => {
 
 
     let partnerControllerCallback = (request,response)=>{
-        let id = request.cookies.id.toString()
-        let hashLogin = sha256(SALT + id)
 
-        if (request.cookies.loggedin === hashLogin){
-            db.lawyers.allProjects(request,(name)=>{
+        if (request.cookies.loggedin != undefined){
+            let id = request.cookies.id.toString()
+            let hashLogin = sha256(SALT + id)
 
-                const data = {
-                    projectList: name,
-                    name: request.cookies.name
-                }
+            if (request.cookies.loggedin === hashLogin){
+                db.lawyers.allProjects(request,(name)=>{
 
-                response.render('partner',data)
-            })
+                    const data = {
+                        projectList: name,
+                        name: request.cookies.name
+                    }
+
+                    response.render('partner',data)
+                })
+            } else {
+                response.send("STOP SPYING ON OTHER PARTNERS")
+            }
         } else {
-            response.send("STOP SPYING ON OTHER PARTNERS")
+            const info ={
+                login: false
+            }
+            response.render('login',info)
         }
 
 
