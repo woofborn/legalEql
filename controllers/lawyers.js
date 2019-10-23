@@ -43,11 +43,12 @@ module.exports = (db) => {
        let project = request.params.name
 
         db.lawyers.allTeam(project,(team)=>{
-
+            console.log('///////////')
+            console.log(team)
             const info = {
             name: request.params.name,
-             partner: request.cookies.name,
-             team
+            partner: request.cookies.name,
+            team: team
             }
         response.render('project', info)
         // response.send(team)

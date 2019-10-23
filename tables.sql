@@ -1,13 +1,13 @@
 CREATE TABLE IF NOT EXISTS partners (
 	id SERIAL PRIMARY KEY,
-	name TEXT,
+	pname TEXT,
 	username TEXT,
 	password TEXT
 );
 
 CREATE TABLE IF NOT EXISTS associates(
 	id SERIAL PRIMARY KEY,
-	name TEXT,
+	aname TEXT,
 	area TEXT,
 	location TEXT
 );

@@ -6,10 +6,10 @@ var Associates = require ('./associates')
 class Project extends React.Component {
   render() {
 
-    if(this.props.associates != undefined){
+    if(this.props.team != undefined){
 
-        var associateList = this.props.associates.map((associate,i)=>{
-           return <li key={i}>{associate}</li>
+        var associateList = this.props.team.map((associate,i)=>{
+           return <li key={i}>{associate.aname}</li>
         })
     }
     return (
@@ -22,7 +22,7 @@ class Project extends React.Component {
         <h4> Deal team: </h4>
             <ol>
             <h5>Partner</h5>
-                <li>{this.props.partner}</li>
+                <li>{this.props.team[0].pname}</li>
             <h5>Associates</h5>
                 {associateList}
             </ol>

@@ -64,7 +64,7 @@ module.exports = (dbPoolInstance) => {
         // let project = request.params.name;
         console.log(project)
 
-        let query = `SELECT * FROM project_assignment WHERE project_name = '${project}'`
+        let query = `SELECT associates.aname, partners.pname FROM project_assignment INNER JOIN associates ON (associates.id = project_assignment.associate_id) INNER JOIN partners ON (partners.id = project_assignment.partner_id) WHERE project_name = '${project}'`
         console.log(query)
 
         dbPoolInstance.query(query,(err,result)=>{
