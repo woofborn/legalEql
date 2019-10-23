@@ -11,11 +11,12 @@ module.exports = (db) => {
         db.lawyers.verifyLogin(request,(err,result)=>{
 
             if (result != null) {
-                response.cookie('name', result.name)
+                response.cookie('name', result.pname)
                 response.cookie('id',result.id)
+                response.cookie('loggedin','yay')
 
                 const info = {
-                    name: result.name
+                    name: result.pname
                 }
 
                 response.render('partner', info)
