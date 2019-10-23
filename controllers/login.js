@@ -1,4 +1,5 @@
 const sha256 = require('js-sha256');
+const SALT = 'lawyers'
 
 module.exports = (db) => {
 
@@ -13,7 +14,9 @@ module.exports = (db) => {
             if (result != null) {
                 response.cookie('name', result.pname)
                 response.cookie('id',result.id)
-                response.cookie('loggedin','yay')
+                let id = result.id.toString()
+                let hashLogin = sha256(SALT + id)
+                response.cookie('loggedin',hashLogin)
 
                 const info = {
                     name: result.pname

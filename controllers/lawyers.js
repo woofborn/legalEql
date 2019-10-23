@@ -1,17 +1,29 @@
+const sha256 = require('js-sha256');
+const SALT = 'lawyers'
+
 module.exports = (db) => {
 
 
     let partnerControllerCallback = (request,response)=>{
+        let id = request.cookies.id.toString()
+        let hashLogin = sha256(SALT + id)
 
-         db.lawyers.allProjects(request,(name)=>{
+        if (request.cookies.loggedin === hashLogin){
+            db.lawyers.allProjects(request,(name)=>{
 
-            const data = {
-                projectList: name,
-                name: request.cookies.name
-            }
+                const data = {
+                    projectList: name,
+                    name: request.cookies.name
+                }
 
-            response.render('partner',data)
-        })
+                response.render('partner',data)
+            })
+        } else {
+            response.send("STOP SPYING ON OTHER PARTNERS")
+        }
+
+
+
     }
 
      let newProjectControllerCallback = (request,response)=>{
