@@ -11,7 +11,7 @@ class Newmember extends React.Component {
       <Layout>
 
        <h3> Success! You have added associate {this.props.associate} to Project {this.props.project}!</h3>
-
+<a href={`/projects/${this.props.project}`}>back to Project {this.props.project}</a>
 
      </Layout>
     );
