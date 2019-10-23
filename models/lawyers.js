@@ -45,6 +45,7 @@ module.exports = (dbPoolInstance) => {
         })
     }
 
+
     let addTeam = (request,callback)=>{
 
         let project = request.body.project_associateid[0]
@@ -58,6 +59,20 @@ module.exports = (dbPoolInstance) => {
             console.log(result.rows[0])
             callback(result.rows[0])
         })
+    }
+
+    let nameAssociate = (request,callback)=>{
+
+        let associate = request.body.project_associateid[1]
+        let query = `SELECT associates.aname FROM associates INNER JOIN project_assignment ON (associates.id = project_assignment.associate_id) WHERE associates.id = ${associate}`
+
+        console.log(query)
+
+        dbPoolInstance.query(query,(err,result)=>{
+            console.log(result.rows[0])
+            callback(result.rows[0])
+        })
+
     }
 
     let allTeam = (project,callback)=>{
@@ -79,6 +94,8 @@ module.exports = (dbPoolInstance) => {
         newProject,
         associates,
         addTeam,
+        nameAssociate,
         allTeam
+
     }
 }

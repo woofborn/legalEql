@@ -46,18 +46,13 @@ module.exports = (db) => {
             console.log('///////////')
             console.log(team)
             const info = {
-            name: request.params.name,
-            partner: request.cookies.name,
-            team: team
+                name: request.params.name,
+                partner: request.cookies.name,
+                team: team
             }
         response.render('project', info)
         // response.send(team)
-
-
         })
-
-
-
     }
 
     let associatesControllerCallback = (request,response)=>{
@@ -70,7 +65,6 @@ module.exports = (db) => {
                  const info = {
                     associates,
                     projectName
-
                  }
                  response.render('associates',info)
             })
@@ -80,13 +74,19 @@ module.exports = (db) => {
 
         db.lawyers.addTeam(request,(team)=>{
 
-            const info = {
-                associate: team.associate_id,
+            db.lawyers.nameAssociate(request,(name)=>{
+                const info = {
+                associate: name.aname,
                 project:team.project_name
             }
             console.log('MEOWMOEMOWMOEWEWOM')
             console.log(team)
+            console.log(name)
             response.render('newmember',info)
+
+
+            })
+
         })
 
     }

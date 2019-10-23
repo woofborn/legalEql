@@ -10,10 +10,12 @@ class Associates extends React.Component {
                         <div  className="card">
                             <div className="card-body">
 
-                                <h5 className="card-text"> {associate.name} </h5>
+                                <h5 className="card-text"> {associate.aname} </h5>
 
                                     <div className="card-subtitle mb-2 text-muted">
-                                        <div> location/area of focus/whatever
+                                        <div> Area: {associate.area}
+                                        </div>
+                                        <div> Office: {associate.location}
                                         </div>
                                         <br/>
                                          <form method="POST" action={"/projects/"+this.props.projectName+"/newmember"}>
