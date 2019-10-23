@@ -1,13 +1,13 @@
 var React = require("react");
 var Layout = require('./layout')
 
-class Index extends React.Component {
+class Associates extends React.Component {
   render() {
           const associate = this.props.associates.map((associate,i)=>{
 
-            return   <div className="col-6">
+            return   <div key = {i} className="col-6">
 
-                        <div key = {i} className="card">
+                        <div  className="card">
                             <div className="card-body">
 
                                 <h5 className="card-text"> {associate.name} </h5>
@@ -16,8 +16,10 @@ class Index extends React.Component {
                                         <div> location/area of focus/whatever
                                         </div>
                                         <br/>
-                                         <form method="POST" action={"#"}>
-                                         <button type="submit" className="btn btn-light" value="Add">Add to team</button>
+                                         <form method="POST" action={"/projects/"+this.props.projectName}>
+                                         <input type="submit" className="btn btn-light" value="Add to team"></input>
+                                         <input type = "hidden" name="project_associateid[]"value = {this.props.projectName}></input>
+                                         <input type = "hidden" name="project_associateid[]" value= {associate.id}></input>
 
                                         </form>
                                     </div>
@@ -45,4 +47,4 @@ class Index extends React.Component {
   }
 }
 
-module.exports = Index;
+module.exports = Associates

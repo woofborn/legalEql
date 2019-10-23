@@ -34,9 +34,7 @@ module.exports = (db) => {
                     name: project.name,
 
                 }
-
                 response.redirect(`/projects/${project.name}`)
-
             })
         }
 
@@ -45,22 +43,40 @@ module.exports = (db) => {
         const info = {
             name: request.params.name,
              partner: request.cookies.name
-        }
+            }
         response.render('project', info)
 
     }
 
     let associatesControllerCallback = (request,response)=>{
-
+        console.log("///////////////////")
+        console.log(request.params)
+        console.log("///////////////////")
+        let projectName = request.params.projectname
          db.lawyers.associates(request,(associates)=>{
-                 // response.send(associates)\
-
+                 // response.send(associates)
                  const info = {
                     associates,
-                 }
+                    projectName
 
+                 }
                  response.render('associates',info)
             })
+    }
+
+    let addTeamControllerCallback = (request,response)=>{
+        console.log("TQQTQTQTQTQTQ")
+        console.log(request.body)
+
+        db.lawyers.addTeam(request,(team)=>{
+
+            const info = {
+                project: request.params.projectname
+            }
+
+            response.send(team)
+        })
+
     }
 
   return {
@@ -68,7 +84,8 @@ module.exports = (db) => {
     verify: verifyControllerCallback,
     newProject: newProjectControllerCallback,
     project: projectControllerCallback,
-    associates: associatesControllerCallback
+    associates: associatesControllerCallback,
+    addTeam: addTeamControllerCallback
   }
 
 }

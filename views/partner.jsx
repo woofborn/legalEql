@@ -2,6 +2,7 @@ var React = require("react");
 var Layout = require('./layout');
 var Newproject = require('./addproject')
 
+
 class Partner extends React.Component {
   render() {
 

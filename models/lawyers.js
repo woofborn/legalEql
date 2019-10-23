@@ -43,13 +43,30 @@ module.exports = (dbPoolInstance) => {
             console.log('associates:' + result.rows)
             callback(result.rows)
         })
+    }
 
+    let addTeam = (request,callback)=>{
+
+         let project = request.body.project_associateid[0]
+          let partner = request.cookies.id;
+          let associate = request.body.project_associateid[1]
+
+
+
+        let query = `INSERT INTO project_assignment (partner_id, associate_id, project_name) VALUES (${partner}, ${associate},'${project}') RETURNING *`
+        console.log(query)
+
+        dbPoolInstance.query(query,(err,result)=>{
+            console.log(result.rows[0])
+            callback(result.rows[0])
+        })
     }
 
 
     return{
         verifyLogin,
         newProject,
-        associates
+        associates,
+        addTeam
     }
 }
