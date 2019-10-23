@@ -12,11 +12,13 @@ module.exports = (app, allModels) => {
    */
 
   // require the controller
+  const loginCallbacks = require('./controllers/login')(allModels)
   const ControllerCallbacks = require('./controllers/lawyers')(allModels);
 
-  app.get('/login', ControllerCallbacks.login);
 
-  app.post('/login', ControllerCallbacks.verify);
+  app.get('/login', loginCallbacks.login);
+
+  app.post('/login', loginCallbacks.verify);
 
   app.get('/projects', ControllerCallbacks.partnerPage);
 

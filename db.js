@@ -66,6 +66,10 @@ const allLawyersModelsFunction = require('./models/lawyers');
 
 const lawyersModelsObject = allLawyersModelsFunction( pool );
 
+const loginModelsFunction = require('./models/login');
+
+const loginModelsObject = loginModelsFunction( pool );
+
 
 
 /*
@@ -95,5 +99,6 @@ module.exports = {
    */
 
   // users: userModelsObject,
-  lawyers: lawyersModelsObject
+  lawyers: lawyersModelsObject,
+  login: loginModelsObject
 };
