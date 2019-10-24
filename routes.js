@@ -15,6 +15,7 @@ module.exports = (app, allModels) => {
   const loginCallbacks = require('./controllers/login')(allModels)
   const ControllerCallbacks = require('./controllers/lawyers')(allModels);
 
+  app.get('/', loginCallbacks.landing);
 
   app.get('/login', loginCallbacks.login);
 

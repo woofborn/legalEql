@@ -3,6 +3,10 @@ const SALT = 'lawyers'
 
 module.exports = (db) => {
 
+    let landingControllerCallback = (request,response) =>{
+        response.render('landing')
+    }
+
     let loginControllerCallback = (request, response) => {
         console.log(request.cookies.loggedin )
         response.render('login')
@@ -43,10 +47,9 @@ module.exports = (db) => {
     }
 
   return {
+    landing: landingControllerCallback,
     login: loginControllerCallback,
     verify: verifyControllerCallback,
     logout: logoutControllerCallback
-
   }
-
 }
