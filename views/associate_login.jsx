@@ -13,7 +13,7 @@ class Login extends React.Component {
 
          let login = ""
         if (this.props.login === false){
-            fail =  <h3 style = {{color:"red"}}>Please login to access projects page.</h3>
+            fail =  <h3 style = {{color:"red"}}>Please login as an associate to access the billables page.</h3>
         }
 
         return (

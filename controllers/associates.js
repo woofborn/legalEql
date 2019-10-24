@@ -35,26 +35,49 @@ module.exports = (db) => {
         })
     }
 
-     let apageControllerCallback = (request, response) => {
-        let name = request.cookies.name
+    let apageControllerCallback = (request, response) => {
+        console.log('LOGGED IN COOKIES??????????')
+        console.log(request.cookies.loggedin)
 
-         db.associates.associateProjects(request,(err,result)=>{
-            if (result!=null){
-                console.log(result)
-                var info = {
-                    projects:result,
-                    name
+        if (request.cookies.loggedin === undefined){
+                const info ={
+                    login: false
                 }
+                response.render('associate_login', info)
 
-            } else {
-                info = {
-                    none: true,
-                    name
-                }
+        } else if (request.cookies.loggedin !=undefined){
+
+            let name = request.cookies.name
+            let id = request.cookies.id.toString()
+            let hashLogin = sha256(SALT + id)
+
+            let cheese = request.cookies.cheese
+            console.log(cheese)
+
+                if(request.cookies.cheese != undefined){
+                    response.send("You're not an associate...")
+
+                } else if (request.cookies.loggedin===hashLogin){
+                     db.associates.associateProjects(request,(err,result)=>{
+                        if (result!=null){
+                            console.log(result)
+                            var info = {
+                                projects:result,
+                                name
+                            }
+
+                        } else {
+                            info = {
+                                // none: true,
+                                name
+                            }
+                        }
+                    response.render('associatepage', info)
+                })
             }
 
-        response.render('associatepage', info)
-        })
+        }
+
     };
 
     // let aProjectsControllerCallback = (request,response)=>{

@@ -23,7 +23,7 @@ module.exports = (db) => {
                     response.render('partner',data)
                 })
             } else {
-                response.send("STOP SPYING ON PARTNERS")
+                response.send("STOP TRYING TO SPY ON PARTNERS")
             }
         } else {
             const info ={
