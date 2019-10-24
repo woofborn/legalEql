@@ -72,6 +72,7 @@ module.exports = (db) => {
             const info = {
                 name: request.params.name,
                 partner: request.cookies.name,
+                cheese: request.cookies.cheese,
                 team: team
             }
         response.render('project', info)
