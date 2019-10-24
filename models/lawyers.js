@@ -3,11 +3,20 @@ module.exports = (dbPoolInstance) => {
 
     let newProject = (request,callback)=>{
         console.log(request.body)
-
         let project = request.body.name
         let partnerId = request.cookies.id
-        let upper = project.charAt(0).toUpperCase()+project.substring(1);
 
+    function titleCase(str) {
+       var splitStr = str.toLowerCase().split(' ');
+       for (var i = 0; i < splitStr.length; i++) {
+
+           splitStr[i] = splitStr[i].charAt(0).toUpperCase() + splitStr[i].substring(1);
+           }
+           // Directly return the joined string
+           return splitStr.join(' ');
+        }
+
+        let upper = titleCase(project);
 
        let query = `SELECT * FROM projects WHERE name = '${upper}'`
        console.log('NEW PROJECT QUERY')

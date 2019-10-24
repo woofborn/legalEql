@@ -13,7 +13,10 @@ class Project extends React.Component {
     } else if (this.props.team.length>0) {
         partnerName = this.props.team[0].pname
         associateList = this.props.team.map((associate,i)=>{
-           return <li key={i}>{associate.aname}</li>
+           return <div><div><li key={i}>{associate.aname}</li>
+                <a type="submit" className="btn btn-sm btn-outline-dark" href={"/associates/"+this.props.name+"/delete"}>Remove</a>
+                </div>
+                <br/></div>
         })
     }
     return (
