@@ -136,7 +136,7 @@ module.exports = (db) => {
 
 
               setTimeout(()=> {response.redirect("/projects");
-            }, 1500);
+            }, 500);
         })
     }
 

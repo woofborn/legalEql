@@ -8,13 +8,17 @@ module.exports = (dbPoolInstance) => {
         let partnerId = request.cookies.id
         let upper = project.charAt(0).toUpperCase()+project.substring(1);
 
-       let query = `SELECT * FROM projects WHERE name = '${project}'`
+
+       let query = `SELECT * FROM projects WHERE name = '${upper}'`
+       console.log('NEW PROJECT QUERY')
        console.log(query)
 
         dbPoolInstance.query(query,(err,result)=>{
+            console.log(result.rows)
 
-            if (result.rows[0] != undefined && result.rows[0].name === project){
+            if (result.rows.length>0 && result.rows[0].name === upper){
                  // response.send("Be more creative - that one's been taken.")
+                 console.log(result.rows)
                  callback(null)
             } else {
 
@@ -59,7 +63,7 @@ module.exports = (dbPoolInstance) => {
             if (result.rows.length>0){
                 callback(null)
             } else {
-                let query = `INSERT INTO project_assignment (associate_id, project_name) VALUES (, ${associate},'${project}') RETURNING *`
+                let query = `INSERT INTO project_assignment (associate_id, project_name) VALUES (${associate},'${project}') RETURNING *`
                 console.log(query)
 
                 dbPoolInstance.query(query,(err,result)=>{
@@ -101,7 +105,7 @@ module.exports = (dbPoolInstance) => {
         // let query = `SELECT DISTINCT project_name FROM project_assignment WHERE partner_id = ${partnerId}`
         // let query = `SELECT DISTINCT projects.name FROM projects INNER JOIN project_assignment ON (projects.name = project_assignment.project_name) WHERE projects.complete = false`
 
-        let query = `SELECT * FROM projects WHERE partner_id = ${partnerId}`
+        let query = `SELECT name FROM projects  WHERE partner_id = ${partnerId} AND complete = false`
         console.log(query)
 
         dbPoolInstance.query(query,(err,result)=>{

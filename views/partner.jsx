@@ -25,7 +25,7 @@ class Partner extends React.Component {
       <Layout>
         <h1> Welcome, {this.props.name}! </h1>
         <br/>
-        <h2> Your projects: </h2>
+        <h2> Your active projects: </h2>
             <ol>
                 {projects}
             </ol>
@@ -41,7 +41,7 @@ class Partner extends React.Component {
                         <input className="form-control form-control-lg" type="text" placeholder="Type project name." name="name" style={{textTransform: "capitalize"}} required/>
                     </div>
 
-                    <input type="submit" className="btn btn-danger" value="Add project"/>
+                    <input type="submit" className="btn btn-danger" value="Add_project"/>
                 </form>
                 <h3>{unique}</h3>
             </div>
