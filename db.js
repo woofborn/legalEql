@@ -70,6 +70,10 @@ const loginModelsFunction = require('./models/login');
 
 const loginModelsObject = loginModelsFunction( pool );
 
+const associateModelsFunction = require('./models/associates');
+
+const associateModelsObject = associateModelsFunction( pool );
+
 
 
 /*
@@ -100,5 +104,6 @@ module.exports = {
 
   // users: userModelsObject,
   lawyers: lawyersModelsObject,
-  login: loginModelsObject
+  login: loginModelsObject,
+  associates: associateModelsObject
 };

@@ -9,7 +9,9 @@ CREATE TABLE IF NOT EXISTS associates(
 	id SERIAL PRIMARY KEY,
 	aname TEXT,
 	area TEXT,
-	location TEXT
+	location TEXT,
+	username TEXT,
+	password TEXT
 );
 
 CREATE TABLE IF NOT EXISTS projects (
