@@ -11,14 +11,26 @@ class Project extends React.Component {
     if(this.props.team === undefined){
         console.log(partnerName)
     } else if (this.props.team.length>0) {
+
         partnerName = this.props.team[0].pname
+
         associateList = this.props.team.map((associate,i)=>{
-           return <div><div><li key={i}>{associate.aname}</li>
-                <a type="submit" className="btn btn-sm btn-outline-dark" href={"/associates/"+this.props.name+"/delete"}>Remove</a>
+           return <div key={i}><li> {associate.aname}
+            <form method="POST" action={"/associates/"+this.props.name}>
+
+                 <input type="submit" className="btn btn-sm btn-outline-dark" href={"/associates/"+this.props.name+"/delete"} value = "Remove"></input>
+                 <input type = "hidden" name="id_project[]"value={associate.id}></input>
+                 <input type = "hidden" name="id_project[]"value={this.props.name}></input>
+             </form>
+
+             </li>
+
+
+                <br/>
                 </div>
-                <br/></div>
         })
     }
+
     return (
     <Layout>
         <div>

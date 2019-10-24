@@ -26,6 +26,8 @@ module.exports = (app, allModels) => {
 
   app.get('/associates/:projectname', ControllerCallbacks.associates);
 
+  app.post('/associates/:projectname',ControllerCallbacks.remove);
+
   app.post('/projects', ControllerCallbacks.newProject);
 
   app.get('/projects/:name', ControllerCallbacks.project);

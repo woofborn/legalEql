@@ -66,7 +66,8 @@ module.exports = (db) => {
        let project = request.params.name
 
         db.lawyers.allTeam(project,(team)=>{
-
+            console.log('OMG TEAMAMAMAMAMAMAAM')
+            console.log(team)
             const info = {
                 name: request.params.name,
                 partner: request.cookies.name,
@@ -123,6 +124,16 @@ module.exports = (db) => {
         })
     }
 
+    let removeControllerCallback = (request,response)=>{
+
+        db.lawyers.removeAssociate(request, (message)=>{
+            console.log(message);
+            response.redirect("/projects/"+request.body.id_project[1])
+        })
+
+
+    }
+
 
     let completeControllerCallback = (request,response)=>{
         let projectName = request.params.name
@@ -147,7 +158,8 @@ module.exports = (db) => {
     associates: associatesControllerCallback,
     addTeam: addTeamControllerCallback,
     partnerPage: partnerControllerCallback,
-    complete: completeControllerCallback
+    complete: completeControllerCallback,
+    remove: removeControllerCallback
   }
 
 }
