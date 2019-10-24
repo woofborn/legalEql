@@ -24,8 +24,26 @@ module.exports = (dbPoolInstance) => {
         });
     }
 
+    let associateProjects = (request,callback)=>{
+        let id = request.cookies.id
+
+        let query = `SELECT project_name FROM project_assignment WHERE associate_id = ${id}`
+
+        dbPoolInstance.query(query,(err,result)=>{
+             if (result.rows.length>0){
+                console.log(result.rows)
+                callback(null,result.rows)
+            } else {
+                callback(null,null);
+            };
+
+        })
+
+    }
+
 
     return{
         verifyAssociate,
+        associateProjects,
            }
 }

@@ -30,7 +30,6 @@ module.exports = (db) => {
                 const info = {
                     fail: true
                 }
-
                 response.render('associate_login',info)
             }
         })
@@ -39,13 +38,44 @@ module.exports = (db) => {
      let apageControllerCallback = (request, response) => {
         let name = request.cookies.name
 
-        const info = {
-            name,
-        }
+         db.associates.associateProjects(request,(err,result)=>{
+            if (result!=null){
+                console.log(result)
+                var info = {
+                    projects:result,
+                    name
+                }
+
+            } else {
+                info = {
+                    none: true,
+                    name
+                }
+            }
 
         response.render('associatepage', info)
-        // response.send("yay, you logged in" + request.cookies.name)
+        })
     };
+
+    // let aProjectsControllerCallback = (request,response)=>{
+    //     let name = request.cookies.name
+    //     db.associates.associateProjects(request,(err,result)=>{
+    //         if (result!=null){
+    //             console.log(result)
+
+    //             const info = {
+    //                 projects:result,
+    //                 name
+    //             }
+
+    //         } else {
+    //             const info = {
+    //                 none: true,
+    //                 name
+    //             }
+    //         }
+    //     })
+    // }
 
     // let logoutControllerCallback = (request,response)=>{
     //     response.clearCookie('id');
