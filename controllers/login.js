@@ -21,7 +21,10 @@ module.exports = (db) => {
                 response.cookie('id',result.id)
                 let id = result.id.toString()
                 let hashLogin = sha256(SALT + id)
+                let hashCheese = sha256('cheese' + id)
+
                 response.cookie('loggedin',hashLogin)
+                response.cookie('cheese', hashCheese)
 
                 const info = {
                     name: result.pname
@@ -42,6 +45,7 @@ module.exports = (db) => {
         response.clearCookie('id');
         response.clearCookie('loggedin');
         response.clearCookie('name');
+        response.clearCookie('cheese')
 
         response.redirect('/')
     }

@@ -28,7 +28,7 @@ class Layout extends React.Component {
                                 </li>
 
                                 <li className="nav-item">
-                                    <a className="nav-link" href="#">My Billables</a>
+                                    <a className="nav-link" href="http://localhost:3000/billables">My Billables</a>
                                 </li>
 
                                 <form method="GET" action="/logout" className="mr-3">

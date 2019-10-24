@@ -31,7 +31,7 @@ class Associatepage extends React.Component {
             <input type ="date"></input>
             <input placeholder = "number of hours"></input>
 
-            <input type = "submit" className = "btn"></input>
+            <input type = "submit" className = "btn btn-outline-dark"></input>
         </form>
 
 

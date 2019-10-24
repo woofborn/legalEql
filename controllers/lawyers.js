@@ -9,8 +9,9 @@ module.exports = (db) => {
         if (request.cookies.loggedin != undefined){
             let id = request.cookies.id.toString()
             let hashLogin = sha256(SALT + id)
+            let hashCheese = sha256('cheese' + id)
 
-            if (request.cookies.loggedin === hashLogin){
+            if (request.cookies.loggedin === hashLogin && request.cookies.cheese === hashCheese){
                 db.lawyers.allProjects(request,(name)=>{
                     console.log(name)
 
@@ -22,7 +23,7 @@ module.exports = (db) => {
                     response.render('partner',data)
                 })
             } else {
-                response.send("STOP SPYING ON OTHER PARTNERS")
+                response.send("STOP SPYING ON PARTNERS")
             }
         } else {
             const info ={
