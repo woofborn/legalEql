@@ -31,10 +31,6 @@ module.exports = (dbPoolInstance) => {
 
     let associates = (request,callback)=>{
 
-          // let query = `select associate_id,count(associate_id) from project_assignment group by associate_id`;
-
-        // let query = `SELECT associates.id, associates.aname,associates.area,associates.location FROM associates LEFT JOIN (SELECT associate_id,count(associate_id)  FROM project_assignment GROUP BY associate_id) AS count ON (count.associate_id = associates.id) WHERE count<3`;
-
         let query = `SELECT associates.id, associates.aname,associates.area,associates.location FROM associates LEFT JOIN (SELECT result.id, count(result.id) FROM (SELECT associates.id, associates.aname,associates.area,associates.location, project_assignment.project_name FROM associates LEFT JOIN project_assignment ON (project_assignment.associate_id = associates.id)) AS result GROUP BY result.id ) as bigResult ON (bigResult.id = associates.id) WHERE bigResult.count<3`
         console.log(query)
 
@@ -88,8 +84,6 @@ module.exports = (dbPoolInstance) => {
     }
 
     let allTeam = (project,callback)=>{
-        // let project = request.params.name;
-        console.log(project)
 
         let query = `SELECT associates.aname, partners.pname FROM project_assignment INNER JOIN associates ON (associates.id = project_assignment.associate_id) INNER JOIN partners ON (partners.id = project_assignment.partner_id) WHERE project_name = '${project}'`
         console.log(query)
@@ -103,7 +97,9 @@ module.exports = (dbPoolInstance) => {
     let allProjects = (request,callback)=>{
         let partnerId = request.cookies.id
 
-        let query = `SELECT DISTINCT project_name FROM project_assignment WHERE partner_id = ${partnerId}`
+        // let query = `SELECT DISTINCT project_name FROM project_assignment WHERE partner_id = ${partnerId}`
+        let query = `SELECT DISTINCT projects.name FROM projects INNER JOIN project_assignment ON (projects.name = project_assignment.project_name) WHERE projects.complete = false`
+        console.log(query)
 
         dbPoolInstance.query(query,(err,result)=>{
             callback(result.rows)
@@ -111,14 +107,34 @@ module.exports = (dbPoolInstance) => {
 
     }
 
+    let complete = (request,callback)=>{
+        let projectName = request.params.name
+        console.log('QWETAESGJOUHAD;LBJNA;SLDKBN')
+        console.log(projectName)
+
+        let query = `UPDATE projects SET complete = true WHERE name = '${projectName}'`
+        console.log(query)
+
+         dbPoolInstance.query(query,(err,result)=>{
+
+            let query = `DELETE from project_assignment WHERE project_name = '${projectName}'`
+
+            dbPoolInstance.query(query,(err,result)=>{
+
+                callback("Updated and deleted!")
+            })
+
+        })
+    }
+
 
     return{
-
         newProject,
         associates,
         addTeam,
         nameAssociate,
         allTeam,
-        allProjects
+        allProjects,
+        complete
     }
 }

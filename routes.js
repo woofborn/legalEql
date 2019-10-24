@@ -30,5 +30,7 @@ module.exports = (app, allModels) => {
 
   app.get('/projects/:name', ControllerCallbacks.project);
 
+  app.get('/projects/:name/complete', ControllerCallbacks.complete);
+
   app.post('/projects/:name/newmember', ControllerCallbacks.addTeam)
 }

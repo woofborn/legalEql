@@ -11,7 +11,7 @@ class Partner extends React.Component {
     if (this.props.projectList.length>0){
 
         projects = this.props.projectList.map((project,i)=>{
-             return <li key = {i}><a href = {`/projects/${project.project_name}`}>{project.project_name}</a></li>
+             return <li key = {i}><a href = {`/projects/${project.name}`}>{project.name}</a></li>
              })
     }
 

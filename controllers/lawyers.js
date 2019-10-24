@@ -12,6 +12,7 @@ module.exports = (db) => {
 
             if (request.cookies.loggedin === hashLogin){
                 db.lawyers.allProjects(request,(name)=>{
+                    console.log(name)
 
                     const data = {
                         projectList: name,
@@ -29,9 +30,6 @@ module.exports = (db) => {
             }
             response.render('login',info)
         }
-
-
-
     }
 
      let newProjectControllerCallback = (request,response)=>{
@@ -121,22 +119,23 @@ module.exports = (db) => {
                     }
                     response.render('newmember',info)
                 })
-
             }
-
-
         })
     }
 
-    // let allProjectsControllerCallback = (request,response)=>{
 
-    //     db.lawyers.allProjects(request,(name)=>{
-    //         const data = {
-    //             projectList: result.rows
-    //         }
+    let completeControllerCallback = (request,response)=>{
+        let projectName = request.params.name
+        console.log('BANANANANANANANA')
+        console.log(projectName)
 
-    //     })
-    // }
+        db.lawyers.complete(request, (message)=>{
+            console.log(message)
+            response.send('yay you finished Project '+ projectName)
+        })
+
+
+    }
 
   return {
 
@@ -144,7 +143,8 @@ module.exports = (db) => {
     project: projectControllerCallback,
     associates: associatesControllerCallback,
     addTeam: addTeamControllerCallback,
-    partnerPage: partnerControllerCallback
+    partnerPage: partnerControllerCallback,
+    complete: completeControllerCallback
   }
 
 }
