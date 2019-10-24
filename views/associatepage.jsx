@@ -8,12 +8,12 @@ class Associatepage extends React.Component {
 
     let projects = "None!"
 
-    if (this.props.projectList.length>0){
+    // if (this.props.projectList.length>0){
 
-        projects = this.props.projectList.map((project,i)=>{
-             return <li key = {i}><a href = {`/projects/${project.name}`}>{project.name}</a></li>
-             })
-    }
+    //     projects = this.props.projectList.map((project,i)=>{
+    //          return <li key = {i}><a href = {`/projects/${project.name}`}>{project.name}</a></li>
+    //          })
+    // }
 
 
 
@@ -25,6 +25,14 @@ class Associatepage extends React.Component {
             <ol>
                 {projects}
             </ol>
+
+        <h2> Your billables </h2>
+        <form>
+            <input type ="date"></input>
+            <input placeholder = "number of hours"></input>
+
+            <input type = "submit" className = "btn"></input>
+        </form>
 
 
 

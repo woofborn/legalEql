@@ -8,7 +8,7 @@ module.exports = (db) => {
     }
 
     let loginControllerCallback = (request, response) => {
-        console.log(request.cookies.loggedin )
+        console.log(request.cookies.loggedin)
         response.render('login')
     };
 
@@ -43,7 +43,7 @@ module.exports = (db) => {
         response.clearCookie('loggedin');
         response.clearCookie('name');
 
-        response.redirect('/login')
+        response.redirect('/')
     }
 
   return {

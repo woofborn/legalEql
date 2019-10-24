@@ -24,10 +24,11 @@ module.exports = (app, allModels) => {
 
   app.post('/login/associates', associateCallbacks.verify);
 
+  app.get('/billables', associateCallbacks.apage)
+
   app.get('/login', loginCallbacks.login);
 
   app.post('/login', loginCallbacks.verify);
-
 
   app.get('/logout', loginCallbacks.logout);
 

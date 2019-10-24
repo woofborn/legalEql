@@ -22,10 +22,10 @@ module.exports = (db) => {
                 response.cookie('loggedin',hashLogin)
 
                 const info = {
-                    name: result.pname
+                    name: result.aname
                 }
 
-                response.redirect('/projects')
+                response.redirect('/billables')
             } else {
                 const info = {
                     fail: true
@@ -36,18 +36,30 @@ module.exports = (db) => {
         })
     }
 
-    let logoutControllerCallback = (request,response)=>{
-        response.clearCookie('id');
-        response.clearCookie('loggedin');
-        response.clearCookie('name');
+     let apageControllerCallback = (request, response) => {
+        let name = request.cookies.name
 
-        response.redirect('/login')
-    }
+        const info = {
+            name,
+        }
+
+        response.render('associatepage', info)
+        // response.send("yay, you logged in" + request.cookies.name)
+    };
+
+    // let logoutControllerCallback = (request,response)=>{
+    //     response.clearCookie('id');
+    //     response.clearCookie('loggedin');
+    //     response.clearCookie('name');
+
+    //     response.redirect('/login')
+    // }
 
   return {
 
     login: loginControllerCallback,
     verify: verifyControllerCallback,
-    logout: logoutControllerCallback
+    apage: apageControllerCallback
+    // logout: logoutControllerCallback
   }
 }
