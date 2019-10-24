@@ -15,12 +15,12 @@ CREATE TABLE IF NOT EXISTS associates(
 CREATE TABLE IF NOT EXISTS projects (
 	id SERIAL PRIMARY KEY,
 	name TEXT,
+	partner_id INTEGER,
 	complete BOOLEAN DEFAULT false
 );
 
 CREATE TABLE IF NOT EXISTS project_assignment (
 	id SERIAL PRIMARY KEY,
-	partner_id INTEGER,
 	associate_id INTEGER,
 	project_name TEXT
 );

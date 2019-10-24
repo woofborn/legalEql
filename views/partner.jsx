@@ -45,7 +45,7 @@ class Partner extends React.Component {
                 </form>
                 <h3>{unique}</h3>
             </div>
-
+              <script src="/projects.js"></script>
      </Layout>
     );
   }

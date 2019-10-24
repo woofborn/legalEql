@@ -130,11 +130,14 @@ module.exports = (db) => {
         console.log(projectName)
 
         db.lawyers.complete(request, (message)=>{
-            console.log(message)
-            response.send('yay you finished Project '+ projectName)
+            console.log(message);
+            console.log("yay, completed")
+
+
+
+              setTimeout(()=> {response.redirect("/projects");
+            }, 1500);
         })
-
-
     }
 
   return {

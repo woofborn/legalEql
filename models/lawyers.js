@@ -5,6 +5,7 @@ module.exports = (dbPoolInstance) => {
         console.log(request.body)
 
         let project = request.body.name
+        let partnerId = request.cookies.id
         let upper = project.charAt(0).toUpperCase()+project.substring(1);
 
        let query = `SELECT * FROM projects WHERE name = '${project}'`
@@ -17,7 +18,7 @@ module.exports = (dbPoolInstance) => {
                  callback(null)
             } else {
 
-                let query = `INSERT INTO projects (name) VALUES ('${upper}') RETURNING *`;
+                let query = `INSERT INTO projects (name,partner_id) VALUES ('${upper}',${partnerId}) RETURNING *`;
 
                     dbPoolInstance.query(query,(err,result)=>{
 
@@ -58,7 +59,7 @@ module.exports = (dbPoolInstance) => {
             if (result.rows.length>0){
                 callback(null)
             } else {
-                let query = `INSERT INTO project_assignment (partner_id, associate_id, project_name) VALUES (${partner}, ${associate},'${project}') RETURNING *`
+                let query = `INSERT INTO project_assignment (associate_id, project_name) VALUES (, ${associate},'${project}') RETURNING *`
                 console.log(query)
 
                 dbPoolInstance.query(query,(err,result)=>{
@@ -85,7 +86,7 @@ module.exports = (dbPoolInstance) => {
 
     let allTeam = (project,callback)=>{
 
-        let query = `SELECT associates.aname, partners.pname FROM project_assignment INNER JOIN associates ON (associates.id = project_assignment.associate_id) INNER JOIN partners ON (partners.id = project_assignment.partner_id) WHERE project_name = '${project}'`
+        let query = `SELECT associates.aname, partners.pname FROM project_assignment INNER JOIN associates ON (associates.id = project_assignment.associate_id) INNER JOIN projects ON (projects.name = project_assignment.project_name) INNER JOIN partners ON (partners.id = projects.partner_id) WHERE project_name = '${project}'`
         console.log(query)
 
         dbPoolInstance.query(query,(err,result)=>{
@@ -98,7 +99,9 @@ module.exports = (dbPoolInstance) => {
         let partnerId = request.cookies.id
 
         // let query = `SELECT DISTINCT project_name FROM project_assignment WHERE partner_id = ${partnerId}`
-        let query = `SELECT DISTINCT projects.name FROM projects INNER JOIN project_assignment ON (projects.name = project_assignment.project_name) WHERE projects.complete = false`
+        // let query = `SELECT DISTINCT projects.name FROM projects INNER JOIN project_assignment ON (projects.name = project_assignment.project_name) WHERE projects.complete = false`
+
+        let query = `SELECT * FROM projects WHERE partner_id = ${partnerId}`
         console.log(query)
 
         dbPoolInstance.query(query,(err,result)=>{
