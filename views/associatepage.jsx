@@ -22,6 +22,11 @@ class Associatepage extends React.Component {
              })
     }
 
+//     var myDoughnutChart = new Chart(ctx, {
+//     type: 'doughnut',
+//     data: data,
+//     options: options
+// });
 
 
 
@@ -34,7 +39,7 @@ class Associatepage extends React.Component {
                 {projects}
             </ol>
 
-        <h2> Your billables </h2>
+        <h2> Add billables </h2>
         <form method="POST" action="/billables">
             <input type ="date" name = "date"></input>
             <input placeholder = "number of hours" name = "hours"></input>
@@ -46,8 +51,16 @@ class Associatepage extends React.Component {
             <input type = "submit" className = "btn btn-outline-dark"></input>
         </form>
 
+        <h2>Billables per project</h2>
 
 
+
+        <a href = "#" className = "btn btn-danger">Your billables summary</a>
+
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.bundle.js"></script>
+              <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.bundle.min.js"></script>
      </Layout>
     );
   }
