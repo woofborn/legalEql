@@ -2,10 +2,15 @@ console.log("JS file connected MEOW!")
 
 
 var ctx = document.getElementById('myChart');
+console.log(projects)
+var Red = projects[0].project_name;
+var Blue = projects[1].project_name;
+var Green = projects[2].project_name;
+
 var myChart = new Chart(ctx, {
     type: 'pie',
     data: {
-        labels: ['Red', 'Blue','Green'],
+        labels: [Red, Blue, Green],
         datasets: [{
             label: '# of Votes',
             data: [10,10,10],
@@ -21,14 +26,6 @@ var myChart = new Chart(ctx, {
             ],
             borderWidth: 1
         }]
-    },
-    options: {
-        scales: {
-            yAxes: [{
-                ticks: {
-                    beginAtZero: true
-                }
-            }]
-        }
     }
+
 });

@@ -47,11 +47,14 @@ class Associatepage extends React.Component {
         <h2>Billables per project</h2>
 
 
-        <div>
-            <canvas id="myChart" width="400" height="400"></canvas>
+        <div className = "canvas">
+            <canvas id="myChart" width="200" height="200"></canvas>
         </div>
-
+     <script dangerouslySetInnerHTML={ {__html:
+                          `var projects = '${this.props.projects}';`
+                      }}/>
     <script src = "/projects.js"></script>
+
      </Layout>
     );
   }

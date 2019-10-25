@@ -11,3 +11,9 @@ body, html {
   background-repeat: no-repeat;
   background-size: cover;
 }
+
+.canvas {
+	width: 50%;
+	height:50%
+
+}
