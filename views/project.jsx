@@ -62,7 +62,8 @@ class Project extends React.Component {
         </div>
         <br/>
          <div>
-                <a type="submit" className="btn btn-dark" href={"/projects"}>Back to My Projects</a>
+             {this.props.cheese != undefined ? (  <a type="submit" className="btn btn-dark" href={"/projects"}>Back to My Projects</a>) : ( <a type="submit" className="btn btn-outline-dark" href={"/billables"}>Back to My Billables</a>)}
+
                 </div>
 
      </Layout>
