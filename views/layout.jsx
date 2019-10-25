@@ -20,15 +20,15 @@ class Layout extends React.Component {
                             <span className="navbar-brand">ALW</span>
                             <ul className="nav mr-auto mt-lg-0">
                                 <li className="nav-item">
-                                    <a className="nav-link" href="http://localhost:3000/">Home</a>
+                                    <a className="nav-link" href="/">Home</a>
                                 </li>
 
                                 <li className="nav-item">
-                                    <a className="nav-link" href="http://localhost:3000/projects">My Projects</a>
+                                    <a className="nav-link" href="/projects">My Projects</a>
                                 </li>
 
                                 <li className="nav-item">
-                                    <a className="nav-link" href="http://localhost:3000/billables">My Billables</a>
+                                    <a className="nav-link" href="/billables">My Billables</a>
                                 </li>
 
                                 <form method="GET" action="/logout" className="mr-3">

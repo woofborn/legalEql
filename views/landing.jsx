@@ -23,9 +23,9 @@ class Login extends React.Component {
 
                         <h2> Please select login.</h2>
 
-                            <a type="submit" className="btn btn-light" value="Partner" href="http://localhost:3000/login">Partner</a>
+                            <a type="submit" className="btn btn-light" value="Partner" href="/login">Partner</a>
 
-                            <a type="submit" className="btn btn-dark" value="Associate" href="http://localhost:3000/login/associates">Associate</a>
+                            <a type="submit" className="btn btn-dark" value="Associate" href="/login/associates">Associate</a>
 
                     </div>
                 </div>
