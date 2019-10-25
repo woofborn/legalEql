@@ -2,12 +2,12 @@
   "name": "project_two",
   "version": "1.0.0",
   "description": "",
-  "engines" : {
-    "node" : "^12.10.0"
+  "engines": {
+    "node": "^12.10.0"
   },
   "main": "index.js",
   "scripts": {
-      "start": "node index.js"
+    "start": "node index.js"
   },
   "author": "",
   "license": "ISC",
@@ -18,6 +18,7 @@
     "express-react-views": "^0.11.0",
     "js-sha256": "^0.9.0",
     "method-override": "^3.0.0",
+    "pg": "^7.12.1",
     "react": "^16.10.2",
     "react-dom": "^16.10.2"
   }
