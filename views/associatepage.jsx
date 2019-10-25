@@ -1,5 +1,6 @@
 var React = require("react");
 var Layout = require('./layout');
+var Chart = require('chart.js');
 
 
 class Associatepage extends React.Component {
@@ -22,14 +23,6 @@ class Associatepage extends React.Component {
              })
     }
 
-//     var myDoughnutChart = new Chart(ctx, {
-//     type: 'doughnut',
-//     data: data,
-//     options: options
-// });
-
-
-
     return (
       <Layout>
         <h1> Welcome, {this.props.name}! </h1>
@@ -50,17 +43,15 @@ class Associatepage extends React.Component {
 
             <input type = "submit" className = "btn btn-outline-dark"></input>
         </form>
-
+        <br/>
         <h2>Billables per project</h2>
 
 
+        <div>
+            <canvas id="myChart" width="400" height="400"></canvas>
+        </div>
 
-        <a href = "#" className = "btn btn-danger">Your billables summary</a>
-
-
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.bundle.js"></script>
-              <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.bundle.min.js"></script>
+    <script src = "/projects.js"></script>
      </Layout>
     );
   }
