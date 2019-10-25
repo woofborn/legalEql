@@ -48,7 +48,6 @@ class Associates extends React.Component {
        <Layout>
 
 
-
               <h1>ASSOCIATES</h1>
                 <h2>Choose wisely.</h2>
                 <h3>{selected}</h3>
@@ -56,6 +55,10 @@ class Associates extends React.Component {
                      <div className="row">
                          {associate}
                      </div>
+                    <br/>
+                <div>
+                <a type="submit" className="btn btn-dark" href={"/projects/" + this.props.projectName}>Back to Project {this.props.projectName}</a>
+                </div>
         </Layout>
     );
   }
