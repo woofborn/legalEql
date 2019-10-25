@@ -26,3 +26,11 @@ CREATE TABLE IF NOT EXISTS project_assignment (
 	associate_id INTEGER,
 	project_name TEXT
 );
+
+CREATE TABLE IF NOT EXISTS billables (
+	id SERIAL PRIMARY KEY,
+	project_name TEXT,
+	associate_id INTEGER,
+	amount INTEGER,
+	updated DATE
+)

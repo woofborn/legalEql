@@ -9,9 +9,10 @@ class Associates extends React.Component {
                 selected =  <h3 style = {{color:"red"}}>No, you already picked that one. Try again.</h3>
             }
 
-          const associate = this.props.associates.map((associate,i)=>{
+        if (this.props.associates.length>0) {
 
-            return   <div key = {i} className="col-6">
+            var associate = this.props.associates.map((associate,i)=>{
+                 return   <div key = {i} className="col-6">
 
                         <div  className="card">
                             <div className="card-body">
@@ -36,10 +37,13 @@ class Associates extends React.Component {
                             </div>
                         </div>
                     </div>
+            });
+        } else {
+         associate= <h2 style = {{color:"red"}}> Have you considered hiring? </h2>
+        }
 
 
 
-    });
     return (
        <Layout>
 

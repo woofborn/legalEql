@@ -21,7 +21,7 @@ class Login extends React.Component {
 
                 <h1>WELCOME TO ANG, LOH AND WONG LLP</h1>
 
-                <h2> Associatelogin.</h2>
+                <h2> Associate login.</h2>
                 <form method="POST" action="/login/associates">
                     <div className="form-group">
                         <label>Username: </label>
