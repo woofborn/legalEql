@@ -32,5 +32,5 @@ CREATE TABLE IF NOT EXISTS billables (
 	project_name TEXT,
 	associate_id INTEGER,
 	hours INTEGER,
-	updated DATE
+	updated TEXT
 );

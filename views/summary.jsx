@@ -1,32 +1,24 @@
 var React = require("react");
 var Layout = require('./layout');
 
+const moment = require('moment')
+
 
 class Summary extends React.Component {
   render() {
 
+    let date = moment(this.props.date).format("LL")
     return (
       <Layout>
-        <h1> Welcome, {this.props.name}! </h1>
-        <br/>
-        <h2> Your active projects: </h2>
-            <ol>
-                {projects}
-            </ol>
 
-        <h2> Add billables </h2>
-        <form method="POST" action="/billables">
-            <input type ="date" name = "date"></input>
-            <input placeholder = "number of hours" name = "hours"></input>
-            <select name = "project">
-                <option>Select Project</option>
-                {projectoptions}
-            </select>
+        <h2> Your have inserted the following billable entry: </h2>
+        <ul style = {{listStyleType: "none"}}>
+            <li>Date: {date}</li>
+            <li>Project: {this.props.project}</li>
+            <li>Time spent (in hours): {this.props.hours}</li>
 
-            <input type = "submit" className = "btn btn-outline-dark"></input>
-        </form>
+        </ul>
 
-        <a href = "" className = "btn btn-danger">Your billables summary</a>
      </Layout>
     );
   }
