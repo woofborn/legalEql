@@ -59,11 +59,13 @@ module.exports = (db) => {
 
                 } else if (request.cookies.loggedin===hashLogin){
                      db.associates.associateProjects(request,(err,result)=>{
+
                         if (result!=null){
                             console.log(result)
                             var info = {
                                 projects:result,
-                                name
+                                name,
+                                red: result[0].project_name
                             }
 
                         } else {

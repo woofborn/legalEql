@@ -2,15 +2,17 @@ console.log("JS file connected MEOW!")
 
 
 var ctx = document.getElementById('myChart');
+console.log('PASSING INFOOOOOOOOOOOOO')
+projects = JSON.parse(projects)
 console.log(projects)
-var Red = projects[0].project_name;
-var Blue = projects[1].project_name;
-var Green = projects[2].project_name;
+console.log(projects[0])
+console.log(projects[0].project_name)
+
 
 var myChart = new Chart(ctx, {
     type: 'pie',
     data: {
-        labels: [Red, Blue, Green],
+        labels: [projects[0].project_name, projects[1].project_name, projects[2].project_name],
         datasets: [{
             label: '# of Votes',
             data: [10,10,10],

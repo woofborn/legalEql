@@ -16,6 +16,7 @@ class Layout extends React.Component {
                     <title>ALW LLP</title>
                 </head>
                 <body>
+                <div className="bg">
                     <div className="container">
 
                         <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -45,6 +46,7 @@ class Layout extends React.Component {
                         {this.props.children}
                         </div>
                     </div>
+                </div>
                 </body>
             </html>
         );

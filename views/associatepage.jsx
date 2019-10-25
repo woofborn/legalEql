@@ -51,7 +51,7 @@ class Associatepage extends React.Component {
             <canvas id="myChart" width="200" height="200"></canvas>
         </div>
      <script dangerouslySetInnerHTML={ {__html:
-                          `var projects = '${this.props.projects}';`
+                          `var projects = '${JSON.stringify(this.props.projects)}';`
                       }}/>
     <script src = "/projects.js"></script>
 
