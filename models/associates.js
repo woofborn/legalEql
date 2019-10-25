@@ -41,9 +41,29 @@ module.exports = (dbPoolInstance) => {
 
     }
 
+    let addBillables = (request,callback)=>{
+
+        let project = request.body.project;
+        let associate = request.cookies.id;
+        let hours = request.body.hours;
+        let date = request.body.date;
+
+        let array = [project, associate, hours, date]
+
+        let query = `INSERT INTO billables (project_name, associate_id, hours, updated) VALUES ($1, $2, $3, $4) RETURNING *`
+        console.log(query)
+
+        dbPoolInstance.query(query,array,(err,result)=>{
+            callback(null,result.rows[0])
+        })
+
+
+    }
+
 
     return{
         verifyAssociate,
         associateProjects,
-           }
+        addBillables
+    }
 }

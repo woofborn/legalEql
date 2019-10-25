@@ -31,6 +31,6 @@ CREATE TABLE IF NOT EXISTS billables (
 	id SERIAL PRIMARY KEY,
 	project_name TEXT,
 	associate_id INTEGER,
-	amount INTEGER,
+	hours INTEGER,
 	updated DATE
-)
+);

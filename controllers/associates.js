@@ -52,7 +52,7 @@ module.exports = (db) => {
             let hashLogin = sha256(SALT + id)
 
             let cheese = request.cookies.cheese
-            console.log(cheese)
+            console.log("CHEESE" + cheese)
 
                 if(request.cookies.cheese != undefined){
                     response.send("You're not an associate...")
@@ -69,6 +69,7 @@ module.exports = (db) => {
                         } else {
                             info = {
                                 // none: true,
+                                projects:result,
                                 name
                             }
                         }
@@ -80,39 +81,25 @@ module.exports = (db) => {
 
     };
 
-    // let aProjectsControllerCallback = (request,response)=>{
-    //     let name = request.cookies.name
-    //     db.associates.associateProjects(request,(err,result)=>{
-    //         if (result!=null){
-    //             console.log(result)
 
-    //             const info = {
-    //                 projects:result,
-    //                 name
-    //             }
+    let billableControllerCallback = (request,response)=>{
+        console.log("BILL BABY BILLLLLLLLLLLLL")
+        console.log(request.body)
 
-    //         } else {
-    //             const info = {
-    //                 none: true,
-    //                 name
-    //             }
-    //         }
-    //     })
-    // }
+        db.associates.addBillables(request,(err,result)=>{
 
-    // let logoutControllerCallback = (request,response)=>{
-    //     response.clearCookie('id');
-    //     response.clearCookie('loggedin');
-    //     response.clearCookie('name');
+        response.send(result)
 
-    //     response.redirect('/login')
-    // }
+        })
+
+    }
 
   return {
 
     login: loginControllerCallback,
     verify: verifyControllerCallback,
-    apage: apageControllerCallback
+    apage: apageControllerCallback,
     // logout: logoutControllerCallback
+    billables: billableControllerCallback
   }
 }

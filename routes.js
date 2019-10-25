@@ -24,7 +24,9 @@ module.exports = (app, allModels) => {
 
   app.post('/login/associates', associateCallbacks.verify);
 
-  app.get('/billables', associateCallbacks.apage)
+  app.get('/billables', associateCallbacks.apage);
+
+  app.post('/billables', associateCallbacks.billables);
 
   app.get('/login', loginCallbacks.login);
 
