@@ -53,6 +53,9 @@ class Associatepage extends React.Component {
      <script dangerouslySetInnerHTML={ {__html:
                           `var projects = '${JSON.stringify(this.props.projects)}';`
                       }}/>
+                       <script dangerouslySetInnerHTML={ {__html:
+                          `var billables = '${JSON.stringify(this.props.billables)}';`
+                      }}/>
     <script src = "/projects.js"></script>
 
      </Layout>

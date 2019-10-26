@@ -27,7 +27,7 @@ module.exports = (dbPoolInstance) => {
     let associateProjects = (request,callback)=>{
         let id = request.cookies.id
 
-        let query = `SELECT project_name FROM project_assignment WHERE associate_id = ${id}`
+        let query = `SELECT project_assignment.project_name FROM project_assignment INNER JOIN projects ON (project_assignment.project_name = projects.name) WHERE associate_id = ${id} AND projects.complete = false`
 
         dbPoolInstance.query(query,(err,result)=>{
              if (result.rows.length>0){
@@ -38,6 +38,24 @@ module.exports = (dbPoolInstance) => {
             };
 
         })
+
+    }
+
+       let projectBillable = (request,callback)=>{
+        let id = request.cookies.id
+
+        let query = `SELECT * FROM projects INNER JOIN (SELECT project_name, SUM (hours) FROM billables WHERE associate_id = 2 GROUP BY project_name ) as result ON (result.project_name = projects.name) `
+
+         dbPoolInstance.query(query,(err,result)=>{
+             if (result.rows.length>0){
+                console.log(result.rows)
+                callback(null,result.rows)
+            } else {
+                callback(null,null);
+            };
+
+        })
+
 
     }
 
@@ -60,9 +78,12 @@ module.exports = (dbPoolInstance) => {
     }
 
 
+
+
     return{
         verifyAssociate,
         associateProjects,
-        addBillables
+        addBillables,
+        projectBillable
     }
 }

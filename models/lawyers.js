@@ -36,6 +36,7 @@ module.exports = (dbPoolInstance) => {
             } else {
 
                 let query = `INSERT INTO projects (name,description,partner_id) VALUES ('${upper}','${summary}',${partnerId}) RETURNING *`;
+                console.log(query)
 
                     dbPoolInstance.query(query,(err,result)=>{
 
@@ -134,9 +135,8 @@ module.exports = (dbPoolInstance) => {
         dbPoolInstance.query(query,(err,result)=>{
             callback(result.rows)
         })
+
     }
-
-
 
     let showDescription = (project,callback)=>{
         let query = `SELECT * FROM projects WHERE name = '${project}'`

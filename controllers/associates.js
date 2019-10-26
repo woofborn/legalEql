@@ -51,6 +51,7 @@ module.exports = (db) => {
             let id = request.cookies.id.toString()
             let hashLogin = sha256(SALT + id)
 
+
             let cheese = request.cookies.cheese
             console.log("CHEESE" + cheese)
 
@@ -58,24 +59,32 @@ module.exports = (db) => {
                     response.send("You're not an associate...")
 
                 } else if (request.cookies.loggedin===hashLogin){
+
                      db.associates.associateProjects(request,(err,result)=>{
 
                         if (result!=null){
-                            console.log(result)
-                            var info = {
-                                projects:result,
-                                name,
-                                red: result[0].project_name
-                            }
 
+                              db.associates.projectBillable(request,(err,banana)=>{
+                                 console.log('BANANANANNA RESULT')
+                                 console.log(result)
+                                 console.log(banana)
+
+                                var info = {
+                                projects:result,
+                                billables: banana,
+                                name,
+                                }
+                                     response.render('associatepage', info)
+                            })
                         } else {
                             info = {
                                 // none: true,
                                 projects:result,
                                 name
                             }
+                                 response.render('associatepage', info)
                         }
-                    response.render('associatepage', info)
+
                 })
             }
 

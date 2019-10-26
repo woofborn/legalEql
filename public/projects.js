@@ -4,18 +4,29 @@ console.log("JS file connected MEOW!")
 var ctx = document.getElementById('myChart');
 console.log('PASSING INFOOOOOOOOOOOOO')
 projects = JSON.parse(projects)
+billables = JSON.parse(billables)
 console.log(projects)
-console.log(projects[0])
-console.log(projects[0].project_name)
+console.log(billables)
+
+
+let projectList=[];
+for (let i=0; i<projects.length; i++){
+    projectList.push(projects[i].project_name)
+}
+
+let billed = []
+for (let i=0; i<projects.length; i++){
+    billed.push(billables[i].sum)
+}
 
 
 var myChart = new Chart(ctx, {
     type: 'pie',
     data: {
-        labels: [projects[0].project_name, projects[1].project_name, projects[2].project_name],
+        labels: projectList,
         datasets: [{
             label: '# of Votes',
-            data: [10,10,10],
+            data: billed,
             backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',
                 'rgba(54, 162, 235, 0.2)',
