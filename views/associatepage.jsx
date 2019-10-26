@@ -7,20 +7,26 @@ class Associatepage extends React.Component {
   render() {
 
     let projects = "None!"
+    let projectoptions;
+    let billed;
 
     if (this.props.projects != null){
 
         projects = this.props.projects.map((project,i)=>{
-             return <li key = {i}><a href = {`/projects/${project.project_name}`}>{project.project_name}</a></li>
-             })
-    }
+             return <li key = {i}><a href = {`/projects/${project.project_name}`}>{project.project_name}</a></li>;
+        })
 
-    let projectoptions;
-     if (this.props.projects != null){
+         projectoptions = this.props.projects.map((project,i)=>{
+             return <option key = {i} value = {project.project_name}>{project.project_name}</option>;
+        })
 
-        projectoptions = this.props.projects.map((project,i)=>{
-             return <option key = {i} value = {project.project_name}>{project.project_name}</option>
-             })
+        billed = this.props.billables.map((bill,i)=>{
+
+            return <tr>
+                    <td>{bill.name}</td>
+                    <td>{bill.sum}</td>
+                    </tr>
+         })
     }
 
     return (
@@ -46,10 +52,37 @@ class Associatepage extends React.Component {
         <br/>
         <h2>Billables per project</h2>
 
+        <div class="container">
+            <div class="row">
+                <div class="col-6">
+                    <div class="card">
+                        <div class="card-body">
+                             <canvas id="myChart" width="200" height="200"></canvas>
+                        </div>
+                    </div>
+                </div>
 
-        <div className = "canvas">
-            <canvas id="myChart" width="200" height="200"></canvas>
+                <div class="col-6">
+                    <div class="card">
+                        <div class="card-body">
+                             <table className = "table table-sm">
+                                    <thead className = "thead-light">
+                                        <tr>
+                                          <th>Project</th>
+                                          <th>Billables</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {billed}
+                                    </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+             </div>
         </div>
+
+
      <script dangerouslySetInnerHTML={ {__html:
                           `var projects = '${JSON.stringify(this.props.projects)}';`
                       }}/>
