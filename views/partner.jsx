@@ -8,13 +8,25 @@ class Partner extends React.Component {
 
     let projects = "None!"
 
-    if (this.props.projectList.length>0){
-
-        projects = this.props.projectList.map((project,i)=>{
-             return <li key = {i}><a href = {`/projects/${project.name}`}>{project.name}</a></li>
+    if (this.props.project.length>0){
+        projects = this.props.project.map((project,i)=>{
+             return <div><li key = {i}>
+             <a href = {`/projects/${project.name}`}>{project.name}</a>
+             </li>
+             <p>Description: {project.description}</p>
+             </div>
              })
     }
 
+    let completed = "Still working on everything!";
+
+    if (this.props.completed.length>0){
+        completed = this.props.completed.map((completed,i)=>{
+            return <li key={i}>
+            {completed.name}
+            </li>
+        })
+    }
         let unique;
 
          if (this.props.unique === false){
@@ -29,10 +41,13 @@ class Partner extends React.Component {
             <ol>
                 {projects}
             </ol>
+        <h2> Your completed projects: </h2>
+            <ol>
+                {completed}
+            </ol>
 
 
         <h2> Add new project: </h2>
-
 
             <div>
                 <form method="POST" action="/projects">

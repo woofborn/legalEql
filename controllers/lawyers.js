@@ -12,15 +12,24 @@ module.exports = (db) => {
             let hashCheese = sha256('cheese' + id)
 
             if (request.cookies.loggedin === hashLogin && request.cookies.cheese === hashCheese){
-                db.lawyers.allProjects(request,(name)=>{
-                    console.log(name)
+                db.lawyers.allProjects(request,(project)=>{
+                    console.log(project)
+
+                    db.lawyers.completeProjects(request,(completed)=>{
+                    console.log(completed)
+
 
                     const data = {
-                        projectList: name,
-                        name: request.cookies.name
+                        name: request.cookies.name,
+                        project,
+                        completed
                     }
 
                     response.render('partner',data)
+
+                    })
+
+
                 })
             } else {
                 response.send("STOP TRYING TO SPY ON PARTNERS")

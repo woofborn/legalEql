@@ -117,13 +117,26 @@ module.exports = (dbPoolInstance) => {
     let allProjects = (request,callback)=>{
         let partnerId = request.cookies.id
 
-        let query = `SELECT name FROM projects  WHERE partner_id = ${partnerId} AND complete = false`
+        let query = `SELECT * FROM projects  WHERE partner_id = ${partnerId} AND complete = false`
         console.log(query)
 
         dbPoolInstance.query(query,(err,result)=>{
             callback(result.rows)
         })
     }
+
+     let completeProjects = (request,callback)=>{
+        let partnerId = request.cookies.id
+
+        let query = `SELECT name FROM projects  WHERE partner_id = ${partnerId} AND complete = true`
+        console.log(query)
+
+        dbPoolInstance.query(query,(err,result)=>{
+            callback(result.rows)
+        })
+    }
+
+
 
     let showDescription = (project,callback)=>{
         let query = `SELECT * FROM projects WHERE name = '${project}'`
@@ -154,16 +167,6 @@ module.exports = (dbPoolInstance) => {
     }
 
 
-// let allProjects = (request,callback)=>{
-//         let partnerId = request.cookies.id
-
-//         let query = `SELECT name FROM projects  WHERE partner_id = ${partnerId} AND complete = false`
-//         console.log(query)
-
-//         dbPoolInstance.query(query,(err,result)=>{
-//             callback(result.rows)
-//         })
-//     }
     let removeAssociate = (request,callback)=>{
         let project = request.body.id_project[1]
         let associate = request.body.id_project[0]
@@ -186,6 +189,7 @@ module.exports = (dbPoolInstance) => {
         nameAssociate,
         allTeam,
         allProjects,
+        completeProjects,
         complete,
         removeAssociate,
         showDescription
