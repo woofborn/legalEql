@@ -37,8 +37,10 @@ class Partner extends React.Component {
             <div>
                 <form method="POST" action="/projects">
                     <div className="form-group">
-                        <label>Project name: </label>
                         <input className="form-control form-control-lg" type="text" placeholder="Type project name." name="name" style={{textTransform: "capitalize"}} required/>
+                        <br/>
+                        <input className="form-control form-control-lg" type="text" placeholder="Brief summary of project." name="summary" maxLength="150" required/>
+
                     </div>
 
                     <input type="submit" className="btn btn-danger" value="Add project"/>

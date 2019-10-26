@@ -12,7 +12,24 @@ body, html {
   background-size: cover;
 }
 
-.container{
+#brandname {
+	font-size: 1.7em;
+}
+
+.nav-item {
+	font-size: 1.1em;
+
+}
+
+ul.nav a:hover {
+	color: #fff !important;
+}
+
+.nav-link{
+	color: grey;
+}
+
+#main{
 	background-image: url("/landingpage.png");
   height: 100%;
   background-position: center;

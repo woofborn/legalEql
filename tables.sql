@@ -17,6 +17,7 @@ CREATE TABLE IF NOT EXISTS associates(
 CREATE TABLE IF NOT EXISTS projects (
 	id SERIAL PRIMARY KEY,
 	name TEXT,
+	description TEXT,
 	partner_id INTEGER,
 	complete BOOLEAN DEFAULT false
 );

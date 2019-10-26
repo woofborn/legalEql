@@ -6,7 +6,8 @@ var Associates = require ('./associates')
 class Project extends React.Component {
   render() {
 
-
+    var summary = this.props.project.description
+    console.log(summary)
     var partnerName = this.props.partner
     var associateList = "Nobody else - just you!"
     if(this.props.team === undefined){
@@ -45,6 +46,8 @@ class Project extends React.Component {
         <div>
             <h1> Project {this.props.name} Overview </h1>
             <br/>
+            <h3>Description:</h3>
+            <p>{summary}</p>
             <h4> Deal team: </h4>
             <br/>
                 <ol>

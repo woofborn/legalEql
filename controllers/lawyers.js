@@ -51,12 +51,14 @@ module.exports = (db) => {
                       })
 
                 } else {
-                    console.log('newproject' + project.id, project.name)
+                    console.log('NEW PROJECTTTTTTTT')
+                    console.log(project.id, project.name, project.description)
                     const info = {
                         id: project.id,
                         name: project.name,
 
                     }
+                    console.log(info)
                     response.redirect(`/projects/${project.name}`)
                 }
             })
@@ -69,13 +71,22 @@ module.exports = (db) => {
         db.lawyers.allTeam(project,(team)=>{
             console.log('OMG TEAMAMAMAMAMAMAAM')
             console.log(team)
-            const info = {
+            db.lawyers.showDescription(project,(project)=>{
+
+                const info = {
                 name: request.params.name,
                 partner: request.cookies.name,
                 cheese: request.cookies.cheese,
-                team: team
+                team: team,
+                project: project
             }
-        response.render('project', info)
+
+        console.log(team, project)
+         response.render('project', info)
+        // response.send('you broke everything')
+
+            })
+
         // response.send(team)
         })
     }

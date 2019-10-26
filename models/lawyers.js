@@ -2,9 +2,13 @@ module.exports = (dbPoolInstance) => {
 
 
     let newProject = (request,callback)=>{
+
+        console.log('NEW PROJECT BEING ADDEDDDDDD')
         console.log(request.body)
         let project = request.body.name
+        let summary = request.body.summary
         let partnerId = request.cookies.id
+        console.log(project, summary)
 
         function titleCase(str) {
            var splitStr = str.toLowerCase().split(' ');
@@ -31,7 +35,7 @@ module.exports = (dbPoolInstance) => {
                  callback(null)
             } else {
 
-                let query = `INSERT INTO projects (name,partner_id) VALUES ('${upper}',${partnerId}) RETURNING *`;
+                let query = `INSERT INTO projects (name,description,partner_id) VALUES ('${upper}','${summary}',${partnerId}) RETURNING *`;
 
                     dbPoolInstance.query(query,(err,result)=>{
 
@@ -97,9 +101,11 @@ module.exports = (dbPoolInstance) => {
 
     }
 
+
     let allTeam = (project,callback)=>{
 
-        let query = `SELECT associates.id, associates.aname, partners.pname FROM project_assignment INNER JOIN associates ON (associates.id = project_assignment.associate_id) INNER JOIN projects ON (projects.name = project_assignment.project_name) INNER JOIN partners ON (partners.id = projects.partner_id) WHERE project_name = '${project}'`
+        let query = `SELECT associates.id, associates.aname, partners.pname, projects.name, projects.description FROM project_assignment INNER JOIN associates ON (associates.id = project_assignment.associate_id) INNER JOIN projects ON (projects.name = project_assignment.project_name) INNER JOIN partners ON (partners.id = projects.partner_id) WHERE project_name = '${project}'`
+
         console.log(query)
 
         dbPoolInstance.query(query,(err,result)=>{
@@ -117,6 +123,14 @@ module.exports = (dbPoolInstance) => {
         dbPoolInstance.query(query,(err,result)=>{
             callback(result.rows)
         })
+    }
+
+    let showDescription = (project,callback)=>{
+        let query = `SELECT * FROM projects WHERE name = '${project}'`
+         dbPoolInstance.query(query,(err,result)=>{
+            callback(result.rows[0])
+        })
+
     }
 
     let complete = (request,callback)=>{
@@ -173,6 +187,7 @@ module.exports = (dbPoolInstance) => {
         allTeam,
         allProjects,
         complete,
-        removeAssociate
+        removeAssociate,
+        showDescription
     }
 }

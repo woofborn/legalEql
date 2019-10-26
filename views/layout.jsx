@@ -17,10 +17,11 @@ class Layout extends React.Component {
                 </head>
                 <body>
                 <div className="bg">
-                    <div className="container">
 
-                        <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
-                            <span className="navbar-brand">ALW</span>
+
+                        <nav className="navbar navbar-expand-md navbar-dark bg-dark">
+                         <div className="container">
+                            <span className="navbar-brand" id="brandname">ALW</span>
                             <ul className="nav mr-auto mt-lg-0">
                                 <li className="nav-item">
                                     <a className="nav-link" href="/">Home</a>
@@ -35,18 +36,18 @@ class Layout extends React.Component {
                                 </li>
 
                                 <form method="GET" action="/logout" className="mr-3">
-                                    <input type="submit" className="btn btn-outline-primary" value="logout"/>
+                                    <input type="submit" className="btn btn-outline-danger" value="logout"/>
                                 </form>
 
                             </ul>
-
+                            </div>
                         </nav>
 
-                        <div className="jumbotron">
+                        <div className="container" id="main">
                         {this.props.children}
                         </div>
                     </div>
-                </div>
+
                 </body>
             </html>
         );
