@@ -56,7 +56,6 @@ module.exports = (dbPoolInstance) => {
 
         })
 
-
     }
 
     let addBillables = (request,callback)=>{
@@ -67,6 +66,7 @@ module.exports = (dbPoolInstance) => {
         let date = request.body.date;
 
         let array = [project, associate, hours, date]
+        console.log(array)
 
         let query = `INSERT INTO billables (project_name, associate_id, hours, updated) VALUES ($1, $2, $3, $4) RETURNING *`
         console.log(query)
@@ -77,6 +77,16 @@ module.exports = (dbPoolInstance) => {
 
     }
 
+    let billableSummary = (request,callback)=>{
+
+        let project = request.body.project
+
+        let query = `SELECT * from billables WHERE project_name = '${project}'`
+        dbPoolInstance.query(query,(err,result)=>{
+            callback(null,result.rows)
+        })
+    }
+
 
 
 
@@ -84,6 +94,7 @@ module.exports = (dbPoolInstance) => {
         verifyAssociate,
         associateProjects,
         addBillables,
-        projectBillable
+        projectBillable,
+        billableSummary,
     }
 }

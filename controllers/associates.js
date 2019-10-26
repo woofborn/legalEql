@@ -101,14 +101,23 @@ module.exports = (db) => {
         db.associates.addBillables(request,(err,result)=>{
             let dateString = result.updated.toString()
             console.log(typeof dateString)
-            const data = {
+
+            db.associates.billableSummary(request,(err,banana)=>{
+
+                 const data = {
                 project: result.project_name,
                 hours: result.hours,
-                date: dateString
+                date: dateString,
+                billables: banana,
             }
-        // response.send(result)
+                console.log(data)
 
             response.render('summary', data)
+
+
+            })
+
+
 
         })
 

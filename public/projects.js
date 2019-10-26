@@ -25,7 +25,7 @@ var myChart = new Chart(ctx, {
     data: {
         labels: projectList,
         datasets: [{
-            label: '# of Votes',
+
             data: billed,
             backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',

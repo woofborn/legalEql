@@ -40,9 +40,9 @@ class Associatepage extends React.Component {
 
         <h2> Add billables </h2>
         <form method="POST" action="/billables">
-            <input type ="date" name = "date"></input>
-            <input placeholder = "number of hours" name = "hours"></input>
-            <select name = "project">
+            <input type ="date" name = "date" required></input>
+            <input placeholder = "number of hours" name = "hours" required></input>
+            <select name = "project" required>
                 <option>Select Project</option>
                 {projectoptions}
             </select>
