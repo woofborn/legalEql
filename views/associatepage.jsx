@@ -20,14 +20,11 @@ class Associatepage extends React.Component {
              return <option key = {i} value = {project.project_name}>{project.project_name}</option>;
         })
 
-
-
-
     if (this.props.billables != null){
          billed = this.props.billables.map((bill,i)=>{
 
             return <tr>
-                    <td>{bill.name}</td>
+                    <td>{bill.project_name}</td>
                     <td>{bill.sum}</td>
                     </tr>
                      })
@@ -87,6 +84,13 @@ class Associatepage extends React.Component {
              </div>
         </div>
         </div>):(<br/>)}
+
+        <h2>Total Billed</h2>
+        <div class="progress">
+              <div class="progress-bar progress-bar-success" role="progressbar" style={{width:"40%"}}>
+                40% Complete (success)
+              </div>
+        </div>
 
 
 
