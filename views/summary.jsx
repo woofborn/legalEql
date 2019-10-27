@@ -51,6 +51,7 @@ class Summary extends React.Component {
                 </tbody>
         </table>
 
+        <a type="submit" className="btn btn-outline-dark" href="/billables">back to My Billables</a>
      </Layout>
     );
   }

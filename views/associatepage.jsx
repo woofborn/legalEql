@@ -41,7 +41,7 @@ class Associatepage extends React.Component {
             </ol>
 
         <h2> Add billables </h2>
-        <form method="POST" action="/billables">
+        <form method="POST" action="/billables/summary">
             <input type ="date" name = "date" required></input>
             <input placeholder = "number of hours" name = "hours" required></input>
             <select name = "project" required>
@@ -87,8 +87,8 @@ class Associatepage extends React.Component {
 
         <h2>Total Billed</h2>
 
-        <div className="progress">
-              <div className="progress-bar progress-bar-success" role="progressbar" style={{width: `${this.props.percentage}`}}>
+        <div className="progress" style={{height:"40px"}}>
+              <div className="progress-bar bg-success" valueMin="0" valueMax="100"role="progressbar" style={{width: `${this.props.percentage}%`}}>
                 {this.props.percentage}% of annual target
               </div>
         </div>

@@ -26,7 +26,7 @@ module.exports = (app, allModels) => {
 
   app.get('/billables', associateCallbacks.apage);
 
-  app.post('/billables', associateCallbacks.billables);
+  app.post('/billables/summary', associateCallbacks.billables);
 
   app.get('/login', loginCallbacks.login);
 
