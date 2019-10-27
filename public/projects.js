@@ -15,7 +15,7 @@ for (let i=0; i<projects.length; i++){
 }
 
 let billed = []
-for (let i=0; i<projects.length; i++){
+for (let i=0; i<billables.length; i++){
     billed.push(billables[i].sum)
 }
 

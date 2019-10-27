@@ -44,7 +44,7 @@ module.exports = (dbPoolInstance) => {
        let projectBillable = (request,callback)=>{
         let id = request.cookies.id
 
-        let query = `SELECT * FROM projects INNER JOIN (SELECT project_name, SUM (hours) FROM billables WHERE associate_id = 2 GROUP BY project_name ) as result ON (result.project_name = projects.name) `
+        let query = `SELECT * FROM projects INNER JOIN (SELECT project_name, SUM (hours) FROM billables WHERE associate_id = ${id} GROUP BY project_name ) as result ON (result.project_name = projects.name) `
 
          dbPoolInstance.query(query,(err,result)=>{
              if (result.rows.length>0){
@@ -80,8 +80,9 @@ module.exports = (dbPoolInstance) => {
     let billableSummary = (request,callback)=>{
 
         let project = request.body.project
+        let associate = request.cookies.id
 
-        let query = `SELECT * from billables WHERE project_name = '${project}'`
+        let query = `SELECT * from billables WHERE project_name = '${project}' AND associate_id = ${associate}`
         dbPoolInstance.query(query,(err,result)=>{
             callback(null,result.rows)
         })

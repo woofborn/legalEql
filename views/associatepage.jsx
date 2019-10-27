@@ -20,13 +20,18 @@ class Associatepage extends React.Component {
              return <option key = {i} value = {project.project_name}>{project.project_name}</option>;
         })
 
-        billed = this.props.billables.map((bill,i)=>{
+
+
+
+    if (this.props.billables != null){
+         billed = this.props.billables.map((bill,i)=>{
 
             return <tr>
                     <td>{bill.name}</td>
                     <td>{bill.sum}</td>
                     </tr>
-         })
+                     })
+    }
     }
 
     return (
