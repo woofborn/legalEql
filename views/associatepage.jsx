@@ -55,8 +55,8 @@ class Associatepage extends React.Component {
             <input type = "submit" className = "btn btn-outline-dark"></input>
         </form>
         <br/>
-        <h2>Billables per project</h2>
 
+        {this.props.billables!=null? (<div><h2>Billables per project</h2>
         <div class="container">
             <div class="row">
                 <div class="col-6">
@@ -86,6 +86,8 @@ class Associatepage extends React.Component {
                 </div>
              </div>
         </div>
+        </div>):(<br/>)}
+
 
 
      <script dangerouslySetInnerHTML={ {__html:

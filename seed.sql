@@ -11,9 +11,11 @@ INSERT INTO associates (aname, area,location,username,password) VALUES ('Wilfred
 -- password: wilfred
 INSERT INTO associates (aname, area,location,username,password) VALUES ('Terence', 'Construction','Singapore','tkong','ec9b62167e0d4c0ca7deaccd1330f2064d1b46a89de3efe2e8e1c9d2afec3e8b');
 -- password: terence
--- INSERT INTO associates (aname, area,location) VALUES ('Jasmine', 'Shipping','Singapore');
--- INSERT INTO associates (aname, area,location) VALUES ('Ryan', 'Power','Singapore');
--- INSERT INTO associates (aname, area,location) VALUES ('Garrick', 'Corporate','Singapore');
+
+--all passwords from here are 123
+INSERT INTO associates (aname, area,location,username,password) VALUES ('Jasmine', 'Finance','Singapore', 'jsis', '845a8fd595d6cd7095767b32d11258f7da397e0191bcf14a0297c235885ccea0');
+INSERT INTO associates (aname, area,location,username,password) VALUES ('Ryan', 'Oil & Gas','Singapore', 'ryeo', '845a8fd595d6cd7095767b32d11258f7da397e0191bcf14a0297c235885ccea0');
+INSERT INTO associates (aname, area,location,username,password) VALUES ('Garrick', 'Construction','Singapore','gtan', '845a8fd595d6cd7095767b32d11258f7da397e0191bcf14a0297c235885ccea0');
 
 -- INSERT INTO associates (aname, area, location) VALUES ('Eugene', 'Finance','Hong Kong');
 -- INSERT INTO associates (aname, area,location) VALUES ('Kelly', 'Oil & Gas','Hong Kong');

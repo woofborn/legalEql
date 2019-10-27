@@ -25,8 +25,7 @@ module.exports = (db) => {
                         project,
                         completed
                     }
-                    console.log('!!!!!!!!!!!')
-                    console.log(data)
+
 
                     response.render('partner',data)
 

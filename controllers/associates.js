@@ -5,7 +5,7 @@ module.exports = (db) => {
 
 
     let loginControllerCallback = (request, response) => {
-        console.log(sha256('kenny'+SALT))
+
 
         response.render('associate_login')
     };

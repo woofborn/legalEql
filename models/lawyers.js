@@ -126,16 +126,6 @@ module.exports = (dbPoolInstance) => {
         })
     }
 
-    // let totalProjectBill = (request,callback)=>{
-    //     let partnerId = request.cookies.id
-    //     let query = `SELECT projects.name, sum(hours) FROM projects INNER JOIN billables ON (projects.name = billables.project_name) WHERE projects.partner_id = ${partnerId} AND complete = false GROUP BY projects.name `
-
-    //     dbPoolInstance.query(query,(err,result)=>{
-    //         callback(result.rows)
-    //     })
-
-    // }
-
      let completeProjects = (request,callback)=>{
         let partnerId = request.cookies.id
 
@@ -203,6 +193,6 @@ module.exports = (dbPoolInstance) => {
         complete,
         removeAssociate,
         showDescription,
-        // totalProjectBill
+
     }
 }
