@@ -44,7 +44,7 @@ module.exports = (dbPoolInstance) => {
        let projectBillable = (request,callback)=>{
         let id = request.cookies.id
 
-        let query = `SELECT * FROM project_assignment INNER JOIN (SELECT project_name, SUM (hours) FROM billables WHERE associate_id = ${id} GROUP BY project_name ) as result ON (result.project_name = project_assignment.project_name) `
+        let query = `SELECT * FROM project_assignment INNER JOIN (SELECT project_name, SUM (hours) FROM billables GROUP BY project_name ) as result ON (result.project_name = project_assignment.project_name) WHERE associate_id = ${id}  `
 
 
          dbPoolInstance.query(query,(err,result)=>{
@@ -84,15 +84,31 @@ module.exports = (dbPoolInstance) => {
         let associate = request.cookies.id
 
         let query = `SELECT * from billables WHERE project_name = '${project}' AND associate_id = ${associate}`
-        dbPoolInstance.query(query,(err,result)=>{
-            callback(null,result.rows)
+         dbPoolInstance.query(query,(err,result)=>{
+             if (result.rows.length>0){
+                console.log(result.rows)
+                callback(null,result.rows)
+            } else {
+                callback(null,null);
+            };
+
         })
     }
 
     let totalBillable = (request,callback)=>{
         let associate = request.cookies.id
 
-        let query = `SELECT *, SUM (hours) FROM billables WHERE associate_id = ${associate} GROUP BY associate_id`
+        let query = `SELECT associate_id, SUM (hours) FROM billables WHERE associate_id = ${associate} GROUP BY associate_id`
+
+        dbPoolInstance.query(query,(err,result)=>{
+             if (result.rows.length>0){
+                console.log(result.rows)
+                callback(null,result.rows[0])
+            } else {
+                callback(null,null);
+            };
+
+        })
 
     }
 
@@ -105,5 +121,6 @@ module.exports = (dbPoolInstance) => {
         addBillables,
         projectBillable,
         billableSummary,
+        totalBillable
     }
 }

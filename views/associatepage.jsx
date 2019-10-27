@@ -86,11 +86,13 @@ class Associatepage extends React.Component {
         </div>):(<br/>)}
 
         <h2>Total Billed</h2>
+
         <div className="progress">
-              <div className="progress-bar progress-bar-success" role="progressbar" style={{width:"40%"}}>
-                40% Complete (success)
+              <div className="progress-bar progress-bar-success" role="progressbar" style={{width: `${this.props.percentage}`}}>
+                {this.props.percentage}% of annual target
               </div>
         </div>
+        <p>{this.props.total.sum} hours billed this year</p>
 
 
 

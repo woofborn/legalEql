@@ -65,17 +65,29 @@ module.exports = (db) => {
                         if (result!=null){
 
                               db.associates.projectBillable(request,(err,banana)=>{
-                                 console.log('BANANANANNA RESULT')
+
+                                 db.associates.totalBillable(request,(err,apple)=>{
+                                     console.log('BANANANANNA RESULT')
                                  console.log(result)
                                  console.log(banana)
+
+                                 let totalBilled = parseInt(apple.sum)
+                                 let percentage = Math.floor(totalBilled/1900*100)
+                                 console.log(percentage)
 
                                 var info = {
                                 projects:result,
                                 billables: banana,
+                                total: apple,
+                                percentage,
                                 name,
                                 }
+                                console.log('ASSOCIATE DATAAAAAA')
+                                console.log(info)
                                      response.render('associatepage', info)
+                                })
                             })
+
                         } else {
                             info = {
                                 // none: true,
