@@ -19,29 +19,34 @@ class Layout extends React.Component {
                 <div className="bg">
 
 
-                        <nav className="navbar navbar-expand-md navbar-dark bg-dark">
+                    <nav className="navbar navbar-expand-md navbar-dark bg-dark">
                          <div className="container">
                             <span className="navbar-brand" id="brandname">ALW</span>
-                            <ul className="nav mr-auto mt-lg-0">
-                                <li className="nav-item">
-                                    <a className="nav-link" href="/">Home</a>
-                                </li>
 
-                                <li className="nav-item">
-                                    <a className="nav-link" href="/projects">My Projects</a>
-                                </li>
+                                    <ul className="nav mt-lg-0">
+                                        <li className="nav-item">
+                                            <a className="nav-link" href="/">Home</a>
+                                        </li>
 
-                                <li className="nav-item">
-                                    <a className="nav-link" href="/billables">My Billables</a>
-                                </li>
+                                        <li className="nav-item">
+                                            <a className="nav-link" href="/projects">My Projects</a>
+                                        </li>
 
-                                <form method="GET" action="/logout" className="mr-3">
-                                    <input type="submit" className="btn btn-outline-danger" value="logout"/>
-                                </form>
+                                        <li className="nav-item">
+                                            <a className="nav-link" href="/billables">My Billables</a>
+                                        </li>
 
-                            </ul>
-                            </div>
-                        </nav>
+                                        <form method="GET" action="/logout" className="mr-3">
+                                            <input type="submit" className="btn btn-outline-danger" value="logout"/>
+                                        </form>
+
+                                    </ul>
+
+
+
+                        </div>
+
+                    </nav>
 
                         <div className="container" id="main">
                         {this.props.children}

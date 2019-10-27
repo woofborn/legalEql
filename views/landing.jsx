@@ -20,12 +20,13 @@ class Login extends React.Component {
                 <div className = "jumbotron">
                     <div className = "jumbotron">
                         <h1>WELCOME TO ANG, LOH AND WONG LLP</h1>
-
+                        <br/>
                         <h2> Please select login.</h2>
+                        <br/>
 
-                            <a type="submit" className="btn btn-light" value="Partner" href="/login">Partner</a>
+                            <a type="submit" className="btn btn-lg btn-light" value="Partner" href="/login">Partner</a>
 
-                            <a type="submit" className="btn btn-dark" value="Associate" href="/login/associates">Associate</a>
+                            <a type="submit" className="btn btn-lg btn-dark" value="Associate" href="/login/associates">Associate</a>
 
                     </div>
                 </div>

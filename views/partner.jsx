@@ -11,15 +11,15 @@ class Partner extends React.Component {
     if (this.props.project.length>0){
         projects = this.props.project.map((project,i)=>{
             if (project.sum != null){
-                 return <div><li key = {i}>
-                 <a href = {`/projects/${project.name}`}>{project.name}</a>
+                 return <div style = {{position:"relative"}}><li key = {i}>
+                 <a className = "stretched-link" href = {`/projects/${project.name}`}>{project.name}</a>
                  </li>
                  <p>Description: {project.description}</p>
                  <p>Total billed time: {project.sum} hours</p>
                  </div>
             } else {
-                return <div><li key = {i}>
-                 <a href = {`/projects/${project.name}`}>{project.name}</a>
+                return <div style = {{position:"relative"}}><li key = {i}>
+                 <a className = "stretched-link" href = {`/projects/${project.name}`}>{project.name}</a>
                  </li>
                  <p>Description: {project.description}</p>
                  <p>Total billed time: Nothing yet!</p>
