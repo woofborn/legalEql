@@ -11,8 +11,9 @@ class Summary extends React.Component {
 
     if (this.props.billables!=null){
         billed = this.props.billables.map((bill,i)=>{
+            let time = moment(bill.updated).format("LL")
             return <tr>
-                    <td>{bill.updated}</td>
+                    <td>{time}</td>
                     <td>{bill.hours}</td>
                     </tr>
 

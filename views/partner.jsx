@@ -14,6 +14,7 @@ class Partner extends React.Component {
              <a href = {`/projects/${project.name}`}>{project.name}</a>
              </li>
              <p>Description: {project.description}</p>
+             <p>Total billed time: {project.sum} hours</p>
              </div>
              })
     }

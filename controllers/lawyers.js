@@ -13,6 +13,7 @@ module.exports = (db) => {
 
             if (request.cookies.loggedin === hashLogin && request.cookies.cheese === hashCheese){
                 db.lawyers.allProjects(request,(project)=>{
+                    console.log('PROJECT CALLBACK RESULTTSSSSSSSS')
                     console.log(project)
 
                     db.lawyers.completeProjects(request,(completed)=>{
@@ -24,6 +25,8 @@ module.exports = (db) => {
                         project,
                         completed
                     }
+                    console.log('!!!!!!!!!!!')
+                    console.log(data)
 
                     response.render('partner',data)
 
