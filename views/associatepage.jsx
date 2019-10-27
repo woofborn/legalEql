@@ -86,8 +86,8 @@ class Associatepage extends React.Component {
         </div>):(<br/>)}
 
         <h2>Total Billed</h2>
-        <div class="progress">
-              <div class="progress-bar progress-bar-success" role="progressbar" style={{width:"40%"}}>
+        <div className="progress">
+              <div className="progress-bar progress-bar-success" role="progressbar" style={{width:"40%"}}>
                 40% Complete (success)
               </div>
         </div>

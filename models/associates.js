@@ -89,6 +89,13 @@ module.exports = (dbPoolInstance) => {
         })
     }
 
+    let totalBillable = (request,callback)=>{
+        let associate = request.cookies.id
+
+        let query = `SELECT *, SUM (hours) FROM billables WHERE associate_id = ${associate} GROUP BY associate_id`
+
+    }
+
 
 
 

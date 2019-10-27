@@ -118,7 +118,7 @@ module.exports = (dbPoolInstance) => {
     let allProjects = (request,callback)=>{
         let partnerId = request.cookies.id
 
-        let query = `SELECT projects.name,projects.description,result.sum FROM projects  INNER JOIN (SELECT projects.name, sum(hours) FROM projects INNER JOIN billables ON (projects.name = billables.project_name) WHERE projects.partner_id = 1 AND complete = false GROUP BY projects.name) as result ON (projects.name = result.name) WHERE partner_id = 1 AND complete = false `
+        let query = `SELECT projects.name,projects.description,result.sum FROM projects LEFT JOIN (SELECT projects.name, sum(hours) FROM projects INNER JOIN billables ON (projects.name = billables.project_name) GROUP BY projects.name) as result ON (projects.name = result.name) WHERE partner_id = 1 AND complete = false `
         console.log(query)
 
         dbPoolInstance.query(query,(err,result)=>{

@@ -10,14 +10,24 @@ class Partner extends React.Component {
 
     if (this.props.project.length>0){
         projects = this.props.project.map((project,i)=>{
-             return <div><li key = {i}>
-             <a href = {`/projects/${project.name}`}>{project.name}</a>
-             </li>
-             <p>Description: {project.description}</p>
-             <p>Total billed time: {project.sum} hours</p>
-             </div>
-             })
+            if (project.sum != null){
+                 return <div><li key = {i}>
+                 <a href = {`/projects/${project.name}`}>{project.name}</a>
+                 </li>
+                 <p>Description: {project.description}</p>
+                 <p>Total billed time: {project.sum} hours</p>
+                 </div>
+            } else {
+                return <div><li key = {i}>
+                 <a href = {`/projects/${project.name}`}>{project.name}</a>
+                 </li>
+                 <p>Description: {project.description}</p>
+                 <p>Total billed time: Nothing yet!</p>
+                 </div>
+            }
+        })
     }
+
 
     let completed = "Still working on everything!";
 
