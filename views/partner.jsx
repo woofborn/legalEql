@@ -48,6 +48,7 @@ class Partner extends React.Component {
       <Layout>
         <h1> Welcome, {this.props.name}! </h1>
         <br/>
+        <div className="box">
         <h2> Your active projects: </h2>
             <ol>
                 {projects}
@@ -72,6 +73,7 @@ class Partner extends React.Component {
                     <input type="submit" className="btn btn-danger" value="Add project"/>
                 </form>
                 <h3>{unique}</h3>
+            </div>
             </div>
               <script src="/projects.js"></script>
      </Layout>

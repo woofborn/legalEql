@@ -13,7 +13,7 @@ class Associatepage extends React.Component {
     if (this.props.projects != null){
 
         projects = this.props.projects.map((project,i)=>{
-             return <li key = {i}><a href = {`/projects/${project.project_name}`}>{project.project_name}</a></li>;
+             return <div style = {{position:"relative"}}><li key = {i}><a className = "stretched-link" href = {`/projects/${project.project_name}`}>{project.project_name}</a></li><p>Description:{project.description}</p></div>;
         })
 
          projectoptions = this.props.projects.map((project,i)=>{
@@ -35,12 +35,16 @@ class Associatepage extends React.Component {
       <Layout>
         <h1> Welcome, {this.props.name}! </h1>
         <br/>
-        <h2> Your active projects: </h2>
+        <div className = "box">
+        <div>
+        <h3> Your active projects: </h3>
             <ol>
                 {projects}
             </ol>
+        </div>
 
-        <h2> Add billables </h2>
+        <div>
+        <h3> Add billables </h3>
         <form method="POST" action="/billables/summary">
             <input type ="date" name = "date" required></input>
             <input placeholder = "number of hours" name = "hours" required></input>
@@ -52,6 +56,7 @@ class Associatepage extends React.Component {
             <input type = "submit" className = "btn btn-outline-dark"></input>
         </form>
         <br/>
+        </div>
 
         {this.props.billables!=null? (<div><h2>Billables per project</h2>
         <div class="container">
@@ -85,14 +90,17 @@ class Associatepage extends React.Component {
         </div>
         </div>):(<br/>)}
 
-        <h2>Total Billed</h2>
+        <div>
+        <h3>Total Billed</h3>
 
         <div className="progress" style={{height:"40px"}}>
-              <div className="progress-bar bg-success" valueMin="0" valueMax="100"role="progressbar" style={{width: `${this.props.percentage}%`}}>
+              <div className="progress-bar bg-success" valuemin="0" valuemax="100"role="progressbar" style={{width: `${this.props.percentage}%`}}>
                 {this.props.percentage}% of annual target
               </div>
         </div>
         <p>{this.props.total.sum} hours billed this year</p>
+        </div>
+        </div>
 
 
 

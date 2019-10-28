@@ -27,7 +27,7 @@ module.exports = (dbPoolInstance) => {
     let associateProjects = (request,callback)=>{
         let id = request.cookies.id
 
-        let query = `SELECT project_assignment.project_name FROM project_assignment INNER JOIN projects ON (project_assignment.project_name = projects.name) WHERE associate_id = ${id} AND projects.complete = false`
+        let query = `SELECT project_assignment.project_name,projects.description FROM project_assignment INNER JOIN projects ON (project_assignment.project_name = projects.name) WHERE associate_id = ${id} AND projects.complete = false`
 
         dbPoolInstance.query(query,(err,result)=>{
              if (result.rows.length>0){

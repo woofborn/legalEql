@@ -6,7 +6,7 @@ class Associates extends React.Component {
 
          let selected = ""
             if (this.props.selected===true){
-                selected =  <h3 style = {{color:"red"}}>No, you already picked that one. Try again.</h3>
+                selected =  <div className="alert alert-danger" role="alert">>No, you already picked that one. Try again.</div>
             }
 
         if (this.props.associates.length>0) {
@@ -39,7 +39,7 @@ class Associates extends React.Component {
                     </div>
             });
         } else {
-         associate= <h2 style = {{color:"red"}}> Have you considered hiring? </h2>
+         associate= <div className="alert alert-danger" role="alert"> Have you considered hiring? </div>
         }
 
 
@@ -52,12 +52,14 @@ class Associates extends React.Component {
                 <h2>Choose wisely.</h2>
                 <h3>{selected}</h3>
                 <br/>
+                <div className="box">
                      <div className="row">
                          {associate}
                      </div>
                     <br/>
                 <div>
                 <a type="submit" className="btn btn-dark" href={"/projects/" + this.props.projectName}>Back to Project {this.props.projectName}</a>
+                </div>
                 </div>
         </Layout>
     );

@@ -38,6 +38,8 @@ class Project extends React.Component {
 
     return (
     <Layout>
+
+    <div className = "box">
         <div>
         {this.props.cheese != undefined ? ( <a type="submit" className="btn btn-success" href={"/projects/" + this.props.name + "/complete"}>Project Completed!</a>) : (<br/>)}
 
@@ -68,6 +70,7 @@ class Project extends React.Component {
              {this.props.cheese != undefined ? (  <a type="submit" className="btn btn-dark" href={"/projects"}>Back to My Projects</a>) : ( <a type="submit" className="btn btn-outline-dark" href={"/billables"}>Back to My Billables</a>)}
 
                 </div>
+        </div>
 
      </Layout>
     );
