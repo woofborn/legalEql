@@ -47,18 +47,23 @@ module.exports = (db) => {
      let newProjectControllerCallback = (request,response)=>{
 
             db.lawyers.newProject(request,(project)=>{
-
+                console.log(project)
                 if (project === null){
 
                       db.lawyers.allProjects(request,(name)=>{
 
-                            const data = {
-                                projectList: name,
-                                name: request.cookies.name,
-                                unique: false,
-                            }
 
-                        response.render('partner',data)
+                        db.lawyers.completeProjects(request,(completed)=>{
+
+                                const data = {
+                                    project: name,
+                                    name: request.cookies.name,
+                                    unique: false,
+                                    completed,
+                                }
+
+                            response.render('partner',data)
+                        })
                       })
 
                 } else {

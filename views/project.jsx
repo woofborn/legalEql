@@ -40,10 +40,12 @@ class Project extends React.Component {
     <Layout>
 
     <div className = "box">
-        <div>
+
+        <div style = {{float:"right"}}>
         {this.props.cheese != undefined ? ( <a type="submit" className="btn btn-success" href={"/projects/" + this.props.name + "/complete"}>Project Completed!</a>) : (<br/>)}
 
         </div>
+
          <br/>
         <div>
             <h1> Project {this.props.name} Overview </h1>
@@ -60,13 +62,15 @@ class Project extends React.Component {
                     {associateList}
                 </ol>
 
+
                 <div>
                  {this.props.cheese != undefined ? ( <a type="submit" className="btn btn-danger" href={"/associates/" + this.props.name}>Add team members</a>) : (<br/>)}
-
                  </div>
+
+
         </div>
         <br/>
-         <div>
+          <div style = {{float:"right"}}>
              {this.props.cheese != undefined ? (  <a type="submit" className="btn btn-dark" href={"/projects"}>Back to My Projects</a>) : ( <a type="submit" className="btn btn-outline-dark" href={"/billables"}>Back to My Billables</a>)}
 
                 </div>

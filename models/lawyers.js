@@ -10,13 +10,14 @@ module.exports = (dbPoolInstance) => {
         let partnerId = request.cookies.id
         console.log(project, summary)
 
+//project name entered has capitalised first letter
         function titleCase(str) {
            var splitStr = str.toLowerCase().split(' ');
            for (var i = 0; i < splitStr.length; i++) {
 
                splitStr[i] = splitStr[i].charAt(0).toUpperCase() + splitStr[i].substring(1);
                }
-               // Directly return the joined string
+
                return splitStr.join(' ');
             }
 

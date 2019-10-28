@@ -67,9 +67,6 @@ module.exports = (db) => {
                               db.associates.projectBillable(request,(err,banana)=>{
 
                                  db.associates.totalBillable(request,(err,apple)=>{
-                                     console.log('BANANANANNA RESULT')
-                                 console.log(result)
-                                 console.log(banana)
 
                                  let totalBilled = parseInt(apple.sum)
                                  let percentage = Math.floor(totalBilled/1900*100)

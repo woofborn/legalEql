@@ -41,7 +41,7 @@ class Partner extends React.Component {
         let unique;
 
          if (this.props.unique === false){
-                unique =  <h3 style = {{color:"red"}}>Be more creative - that one's been taken.</h3>
+                unique =  <div className="alert alert-danger" role="alert">Be more creative - that one's been taken.</div>
         }
 
     return (

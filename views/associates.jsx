@@ -6,7 +6,7 @@ class Associates extends React.Component {
 
          let selected = ""
             if (this.props.selected===true){
-                selected =  <div className="alert alert-danger" role="alert">>No, you already picked that one. Try again.</div>
+                selected =  <div className="alert alert-danger" role="alert">No, you already picked that one. Try again.</div>
             }
 
         if (this.props.associates.length>0) {
@@ -50,6 +50,7 @@ class Associates extends React.Component {
 
               <h1>ASSOCIATES</h1>
                 <h2>Choose wisely.</h2>
+
                 <h3>{selected}</h3>
                 <br/>
                 <div className="box">
