@@ -19,7 +19,7 @@ class Layout extends React.Component {
                 <div className="bg">
 
 
-                    <nav className="navbar navbar-expand-md navbar-dark bg-dark">
+                    <nav className="navbar fixed-top navbar-expand-md navbar-dark bg-dark">
                          <div className="container">
                             <span className="navbar-brand" id="brandname">ALW</span>
 

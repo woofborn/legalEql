@@ -180,6 +180,18 @@ module.exports = (db) => {
         })
     }
 
+    let autoControllerCallback = (request,response)=>{
+        console.log(request.body)
+        response.send('autoteam!')
+
+        //find associates in the location
+        //order associates by billables
+        //show number of associates requested
+        //insert these associates into the projectassignment table
+
+
+    }
+
   return {
 
     newProject: newProjectControllerCallback,
@@ -188,7 +200,8 @@ module.exports = (db) => {
     addTeam: addTeamControllerCallback,
     partnerPage: partnerControllerCallback,
     complete: completeControllerCallback,
-    remove: removeControllerCallback
+    remove: removeControllerCallback,
+    auto: autoControllerCallback
   }
 
 }

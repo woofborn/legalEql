@@ -6,9 +6,10 @@ body, html {
 .bg {
 
   background-image: url("/landingpage.png");
-  height: 100%;
+  height: 150%;
   background-position: center;
-  background-repeat: no-repeat;
+  background-repeat: repeat-x;
+  background-attachment: fixed;
   background-size: cover;
 }
 
@@ -30,21 +31,53 @@ ul.nav a:hover {
 }
 
 .box {
-	margin:5%;
-	padding:10%;
+	margin:5% 0;
+	padding:5% 10%;
+
 	/*border: 1px solid black;*/
 	background-color: rgba(220,220,220,0.3);
 }
 
-/*#main{
-	background-image: url("/landingpage.png");
-  height: 100%;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-}*/
+.box-white {
+	margin:5%;
+	/*padding:5%;*/
+	/*border: 1px solid black;*/
+	background-color: rgba(255,255,255,0.9);
+}
+
+.inner-box{
+	margin-top:5%;
+	padding:5%;
+	border: 1px solid black;
+	background-color: rgba(54, 162, 235, 0.2);
+
+}
+
+.outline{
+	border:1px solid black;
+	padding:1% 3.5%;
+}
+
+.progress-bar{
+	background-color: rgba(110, 245, 160,0.5)
+}
 
 .canvas {
 	width: 50%;
 	height:50%
+}
+
+.bigger{
+	font-size: 1.3em;
+	font-weight: 600;
+}
+
+.projectlist{
+	font-size:1.2em;
+
+}
+
+.underline{
+	text-decoration: underline;
+	color: red;
 }

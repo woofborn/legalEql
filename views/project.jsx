@@ -42,7 +42,7 @@ class Project extends React.Component {
     <div className = "box">
 
         <div style = {{float:"right"}}>
-        {this.props.cheese != undefined ? ( <a type="submit" className="btn btn-success" href={"/projects/" + this.props.name + "/complete"}>Project Completed!</a>) : (<br/>)}
+        {this.props.cheese != undefined ? ( <form action = {"/projects/" + this.props.name + "/complete"}><button type="submit" className="btn btn-success" href={"/projects/" + this.props.name + "/complete"}>Project Completed!</button></form>) : (<br/>)}
 
         </div>
 
@@ -64,14 +64,18 @@ class Project extends React.Component {
 
 
                 <div>
-                 {this.props.cheese != undefined ? ( <a type="submit" className="btn btn-danger" href={"/associates/" + this.props.name}>Add team members</a>) : (<br/>)}
+                 {this.props.cheese != undefined ? ( <form action = {"/associates/" + this.props.name}><button type="submit" className="btn btn-danger" href={"/associates/" + this.props.name}>Add team members</button></form>) : (<br/>)}
+                 </div>
+                 <br/>
+                  <div>
+                 {this.props.cheese != undefined ? ( <form method="POST" action = {"/associates/" + this.props.name + "/auto"}><input name = "location" placeholder="location" required></input><input name = "associates" placeholder="# of associates" required></input><button type="submit" className="btn btn-danger">Generate team</button></form>) : (<br/>)}
                  </div>
 
 
         </div>
         <br/>
           <div style = {{float:"right"}}>
-             {this.props.cheese != undefined ? (  <a type="submit" className="btn btn-dark" href={"/projects"}>Back to My Projects</a>) : ( <a type="submit" className="btn btn-outline-dark" href={"/billables"}>Back to My Billables</a>)}
+             {this.props.cheese != undefined ? (  <form action = {"/projects"}><button type="submit" className="btn btn-dark" href={"/projects"}>Back to My Projects</button></form>) : ( <form action = {"/billables"}><button type="submit" className="btn btn-outline-dark" href={"/billables"}>Back to My Billables</button></form>)}
 
                 </div>
         </div>
