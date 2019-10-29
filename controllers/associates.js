@@ -66,6 +66,7 @@ module.exports = (db) => {
 
                               db.associates.projectBillable(request,(err,banana)=>{
 
+                                if (banana!=null){
                                  db.associates.totalBillable(request,(err,apple)=>{
 
                                  let totalBilled = parseInt(apple.sum)
@@ -82,7 +83,17 @@ module.exports = (db) => {
                                 console.log('ASSOCIATE DATAAAAAA')
                                 console.log(info)
                                      response.render('associatepage', info)
+
                                 })
+                                } else {
+                                info = {
+                                // none: true,
+                                projects:result,
+                                billables: banana,
+                                name
+                            }
+                                 response.render('associatepage', info)
+                        }
                             })
 
                         } else {

@@ -60,25 +60,26 @@ class Project extends React.Component {
              {this.props.cheese != undefined ? (  <form action = {"/projects"}><button type="submit" className="btn btn-dark" href={"/projects"}>Back to My Projects</button></form>) : ( <form action = {"/billables"}><button type="submit" className="btn btn-outline-dark" href={"/billables"}>Back to My Billables</button></form>)}
 
                 </div>
-            <h4> Deal team: </h4>
+            <h3> Deal team: </h3>
             <br/>
 
                 <h5>Partner:</h5>
                 <ol>
                 <li className="list-unstyled">{partnerName}</li>
                 </ol>
-                <br/>
+
 
                 <h5>Associates:</h5>
                 <ol>
                    <div>
-                 {this.props.cheese != undefined ? ( <form method="POST" action = {"/associates/" + this.props.name + "/auto"}><button type="submit" className="btn btn-danger" id="generateButt">Generate team</button><input name = "location" placeholder="location" id="generateInput1" style={{textTransform: "capitalize"}} required></input><input name = "associates" placeholder="# of associates" id="generateInput2" required></input></form>) : (<br/>)}
+                 {this.props.cheese != undefined ? ( <form method="POST" action = {"/associates/" + this.props.name + "/auto"}><button type="submit" className="btn btn-danger" id="generateButt">Generate team</button><input name = "location" placeholder="office location" id="generateInput1" style={{textTransform: "capitalize"}} required></input><input name = "associates" placeholder="# of associates" id="generateInput2" required></input></form>) : (<br/>)}
                  </div>
 
                     {associateList}
 
                 <div>
-                 {this.props.cheese != undefined ? ( <form action = {"/associates/" + this.props.name}><button type="submit" className="btn btn-danger"href={"/associates/" + this.props.name} id="addButt" disabled>Add team members</button></form>) : (<br/>)}
+                <br/>
+                 {this.props.cheese != undefined ? ( <form action = {"/associates/" + this.props.name}><button type="submit" className="btn btn-outline-danger"href={"/associates/" + this.props.name} id="addButt" disabled>Add team members</button></form>) : (<br/>)}
                  </div>
                    </ol>
                  <br/>

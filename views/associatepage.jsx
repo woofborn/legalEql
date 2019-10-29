@@ -93,21 +93,19 @@ class Associatepage extends React.Component {
         </div>
         </div>):(<br/>)}
 
-
-        <div style = {{marginTop:"5%"}}>
+        {this.props.billables!=null? (<div style = {{marginTop:"5%"}}>
         <h3>Total Billed</h3>
-
         <div className="progress" style={{height:"40px"}}>
-              <div className="progress-bar" valuemin="0" valuemax="100"role="progressbar" style={{width: `${this.props.percentage}%`, fontSize:"1.4em"}}>
+              <div className="progress-bar bartext" valuemin="0" valuemax="100"role="progressbar" style={{width: `${this.props.percentage}%`, fontSize:"1.4em"}}>
                 {this.props.percentage}% of annual target
               </div>
         </div>
         <br/>
         <p className="bigger"><span className="underline">{this.props.total.sum}</span> hours billed this year</p>
-        </div>
-        </div>
+        </div> ):(<br/>)}
 
 
+        </div>
 
 
      <script dangerouslySetInnerHTML={ {__html:
