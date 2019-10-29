@@ -72,7 +72,7 @@ class Project extends React.Component {
                 <h5>Associates:</h5>
                 <ol>
                    <div>
-                 {this.props.cheese != undefined ? ( <form method="POST" action = {"/associates/" + this.props.name + "/auto"}><button type="submit" className="btn btn-danger" id="generateButt">Generate team</button><input name = "location" placeholder="location" id="generateInput1" required></input><input name = "associates" placeholder="# of associates" id="generateInput2" required></input></form>) : (<br/>)}
+                 {this.props.cheese != undefined ? ( <form method="POST" action = {"/associates/" + this.props.name + "/auto"}><button type="submit" className="btn btn-danger" id="generateButt">Generate team</button><input name = "location" placeholder="location" id="generateInput1" style={{textTransform: "capitalize"}} required></input><input name = "associates" placeholder="# of associates" id="generateInput2" required></input></form>) : (<br/>)}
                  </div>
 
                     {associateList}

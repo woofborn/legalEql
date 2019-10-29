@@ -188,10 +188,22 @@ module.exports = (dbPoolInstance) => {
         let associateNum = request.body.associates
         let project = request.params.projectname
 
+        function titleCase(str) {
+           var splitStr = str.toLowerCase().split(' ');
+           for (var i = 0; i < splitStr.length; i++) {
+
+               splitStr[i] = splitStr[i].charAt(0).toUpperCase() + splitStr[i].substring(1);
+               }
+
+               return splitStr.join(' ');
+            }
+
+        let upper = titleCase(location);
+
         console.log('AUTOMATIC BANANANANANANANA')
         console.log(location, associateNum, project)
 
-        let query = `SELECT associates.id, associates.aname, associates.area,associates.location, result.sum FROM associates LEFT JOIN (SELECT associate_id, SUM(hours) FROM billables GROUP BY associate_id) as result ON (result.associate_id = associates.id) WHERE location = '${location}' ORDER BY sum ASC NULLS FIRST LIMIT ${associateNum}`
+        let query = `SELECT associates.id, associates.aname, associates.area,associates.location, result.sum FROM associates LEFT JOIN (SELECT associate_id, SUM(hours) FROM billables GROUP BY associate_id) as result ON (result.associate_id = associates.id) WHERE location = '${upper}' ORDER BY sum ASC NULLS FIRST LIMIT ${associateNum}`
 
         dbPoolInstance.query(query,(err,result)=>{
 
