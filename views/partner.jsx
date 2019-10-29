@@ -18,7 +18,7 @@ class Partner extends React.Component {
                  <p>Total billed time: {project.sum} hours</p>
                  </div>
             } else {
-                return <div style = {{position:"relative"}}><li key = {i}>
+                return <div style = {{position:"relative", borderBottom: "1px solid black", marginTop:"1%"}}><li key = {i}>
                  <a className = "stretched-link" href = {`/projects/${project.name}`}>{project.name}</a>
                  </li>
                  <p>Description: {project.description}</p>

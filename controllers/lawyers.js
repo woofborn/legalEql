@@ -185,18 +185,9 @@ module.exports = (db) => {
 
         db.lawyers.autoPop(request,(team)=>{
 
-        console.log(team)
-
         response.redirect('/projects/'+request.params.projectname)
 
         })
-
-        //find associates in the location
-        //order associates by billables
-        //show number of associates requested
-        //insert these associates into the projectassignment table
-
-
     }
 
   return {

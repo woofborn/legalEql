@@ -23,10 +23,11 @@ class Login extends React.Component {
                         <br/>
                         <h2> Please select login.</h2>
                         <br/>
+                            <div className="btn-group">
+                            <form action = "/login"><button type="submit" className="btn btn-lg btn-light" value="Partner">Partner</button></form>
 
-                            <a type="submit" className="btn btn-lg btn-light" value="Partner" href="/login">Partner</a>
-
-                            <a type="submit" className="btn btn-lg btn-dark" value="Associate" href="/login/associates">Associate</a>
+                            <form action = "/login/associates"><button type="submit" className="btn btn-lg btn-dark" value="Associate">Associate</button></form>
+                            </div>
 
                     </div>
                 </div>

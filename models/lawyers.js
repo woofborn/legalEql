@@ -212,7 +212,7 @@ module.exports = (dbPoolInstance) => {
             }
 
             let delaysend = ()=>{callback(autoTeam)}
-            setTimeout(delaysend,3000)
+            setTimeout(delaysend,2000)
 
 
         })
