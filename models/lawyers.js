@@ -106,7 +106,7 @@ module.exports = (dbPoolInstance) => {
 
     let allTeam = (project,callback)=>{
 
-        let query = `SELECT associates.id, associates.aname, partners.pname, projects.name, projects.description FROM project_assignment INNER JOIN associates ON (associates.id = project_assignment.associate_id) INNER JOIN projects ON (projects.name = project_assignment.project_name) INNER JOIN partners ON (partners.id = projects.partner_id) WHERE project_name = '${project}'`
+        let query = `SELECT associates.id, associates.aname, associates.area, associates.location, partners.pname, projects.name, projects.description FROM project_assignment INNER JOIN associates ON (associates.id = project_assignment.associate_id) INNER JOIN projects ON (projects.name = project_assignment.project_name) INNER JOIN partners ON (partners.id = projects.partner_id) WHERE project_name = '${project}'`
 
         console.log(query)
 
@@ -182,6 +182,44 @@ module.exports = (dbPoolInstance) => {
         })
     }
 
+    let autoPop = (request,callback)=>{
+
+        let location = request.body.location
+        let associateNum = request.body.associates
+        let project = request.params.projectname
+
+        console.log('AUTOMATIC BANANANANANANANA')
+        console.log(location, associateNum, project)
+
+        let query = `SELECT associates.id, associates.aname, associates.area,associates.location, result.sum FROM associates INNER JOIN (SELECT associate_id, SUM(hours) FROM billables GROUP BY associate_id) as result ON (result.associate_id = associates.id) WHERE location = '${location}' ORDER BY sum ASC LIMIT ${associateNum}`
+
+        dbPoolInstance.query(query,(err,result)=>{
+
+            console.log(result.rows)
+
+            let autoTeam = []
+
+            for (let i=0;i<result.rows.length;i++){
+
+                let query = `INSERT INTO project_assignment (associate_id,project_name) VALUES (${result.rows[i].id},'${project}') RETURNING *;`
+                console.log(query)
+
+                dbPoolInstance.query(query,(err,result)=>{
+                    console.log('QUERY IN LOOP')
+                     console.log(autoTeam)
+                    autoTeam.push(result.rows)
+                 })
+            }
+
+            let delaysend = ()=>{callback(autoTeam)}
+            setTimeout(delaysend,3000)
+
+
+        })
+    }
+
+
+
 
     return{
         newProject,
@@ -194,6 +232,7 @@ module.exports = (dbPoolInstance) => {
         complete,
         removeAssociate,
         showDescription,
+        autoPop
 
     }
 }

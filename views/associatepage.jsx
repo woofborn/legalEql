@@ -47,8 +47,8 @@ class Associatepage extends React.Component {
         <div className = "inner-box">
         <h3> Add billables </h3>
         <form method="POST" action="/billables/summary">
-            <input type ="date" name = "date" required></input>
-            <input placeholder = "number of hours" name = "hours" required></input>
+            <input className = "shadow-sm p-1 mb- bg-white rounded" type ="date" name = "date" required></input>
+            <input className = "shadow-sm p-1 mb-1 bg-white rounded" placeholder = "number of hours" name = "hours" required></input>
             <select name = "project" required>
                 <option>Select Project</option>
                 {projectoptions}

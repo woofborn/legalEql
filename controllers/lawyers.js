@@ -182,7 +182,14 @@ module.exports = (db) => {
 
     let autoControllerCallback = (request,response)=>{
         console.log(request.body)
-        response.send('autoteam!')
+
+        db.lawyers.autoPop(request,(team)=>{
+
+        console.log(team)
+
+        response.redirect('/projects/'+request.params.projectname)
+
+        })
 
         //find associates in the location
         //order associates by billables

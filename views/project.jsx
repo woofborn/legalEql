@@ -18,7 +18,7 @@ class Project extends React.Component {
         partnerName = this.props.team[0].pname
 
         associateList = this.props.team.map((associate,i)=>{
-           return <div key={i}><li> {associate.aname}
+           return <div key={i}><li> {associate.aname}{associate.location}{associate.area}
 
             {this.props.cheese != undefined ? (  <form method="POST" action={"/associates/"+this.props.name}>
                  <input type="submit" className="btn btn-sm btn-outline-dark" href={"/associates/"+this.props.name+"/delete"} value = "Remove"></input>
