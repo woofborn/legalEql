@@ -191,7 +191,7 @@ module.exports = (dbPoolInstance) => {
         console.log('AUTOMATIC BANANANANANANANA')
         console.log(location, associateNum, project)
 
-        let query = `SELECT associates.id, associates.aname, associates.area,associates.location, result.sum FROM associates INNER JOIN (SELECT associate_id, SUM(hours) FROM billables GROUP BY associate_id) as result ON (result.associate_id = associates.id) WHERE location = '${location}' ORDER BY sum ASC LIMIT ${associateNum}`
+        let query = `SELECT associates.id, associates.aname, associates.area,associates.location, result.sum FROM associates LEFT JOIN (SELECT associate_id, SUM(hours) FROM billables GROUP BY associate_id) as result ON (result.associate_id = associates.id) WHERE location = '${location}' ORDER BY sum ASC NULLS FIRST LIMIT ${associateNum}`
 
         dbPoolInstance.query(query,(err,result)=>{
 
