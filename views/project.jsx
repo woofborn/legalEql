@@ -74,6 +74,7 @@ class Project extends React.Component {
                    <div>
                  {this.props.cheese != undefined ? ( <form method="POST" action = {"/associates/" + this.props.name + "/auto"}><button type="submit" className="btn btn-danger" id="generateButt">Generate team</button><input name = "location" placeholder="office location" id="generateInput1" style={{textTransform: "capitalize"}} required></input><input name = "associates" placeholder="# of associates" id="generateInput2" required></input></form>) : (<span></span>)}
                  </div>
+                 <br/>
 
                     {associateList}
 

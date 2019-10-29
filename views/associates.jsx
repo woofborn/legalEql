@@ -27,7 +27,7 @@ class Associates extends React.Component {
                                         <br/>
                                          <form method="POST" action={"/projects/"+this.props.projectName+"/newmember"}>
 
-                                             <input type="submit" className="btn btn-light" value="Add to team"></input>
+                                             <input type="submit" className="btn btn-outline-primary" value="Add to team"></input>
                                              <input type = "hidden" name="project_associateid[]"value = {this.props.projectName}></input>
                                              <input type = "hidden" name="project_associateid[]" value= {associate.id}></input>
 
@@ -60,7 +60,7 @@ class Associates extends React.Component {
                      </div>
                     <br/>
                 <div>
-                <a type="submit" className="btn btn-dark" href={"/projects/" + this.props.projectName}>Back to Project {this.props.projectName}</a>
+                <form action = {"/projects/" + this.props.projectName}><button type="submit" className="btn btn-dark" href={"/projects/" + this.props.projectName}>Back to Project {this.props.projectName}</button></form>
                 </div>
                 </div>
         </Layout>

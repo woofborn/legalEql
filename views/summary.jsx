@@ -29,7 +29,7 @@ class Summary extends React.Component {
       <Layout>
       <div className="wrap-box">
       <div className="box">
-            <h2> Your have inserted the following billable entry: </h2>
+            <h2> You have inserted the following billable entry: </h2>
             <ul style = {{listStyleType: "none"}}>
                 <li>Date: {date}</li>
                 <li>Project: {this.props.project}</li>

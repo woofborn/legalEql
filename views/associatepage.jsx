@@ -13,7 +13,7 @@ class Associatepage extends React.Component {
     if (this.props.projects != null){
 
         projects = this.props.projects.map((project,i)=>{
-             return <div  style = {{position:"relative", borderBottom: "1px solid black", marginTop:"1%"}}><li key = {i}><a className = "stretched-link" href = {`/projects/${project.project_name}`}>{project.project_name}</a></li><p>Description:{project.description}</p></div>;
+             return <div  style = {{position:"relative", borderBottom: "1px solid black", marginTop:"1%"}}><li key = {i}><a className = "stretched-link" href = {`/projects/${project.project_name}`}>{project.project_name}</a></li><p>Description: {project.description}</p></div>;
         })
 
          projectoptions = this.props.projects.map((project,i)=>{
