@@ -3,6 +3,10 @@ body, html {
   width: 100%;
 }
 
+body,nav {
+	min-width: 550px;
+}
+
 .bg {
 
   background-image: url("/landingpage.png");
