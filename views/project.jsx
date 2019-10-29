@@ -18,23 +18,23 @@ class Project extends React.Component {
         partnerName = this.props.team[0].pname
 
         associateList = this.props.team.map((associate,i)=>{
-           return <div key={i}><li> {associate.aname}</li>
+           return <div key={i}><li className="lawyer"> {associate.aname}</li>
            <ul className = "list-unstyled"><li> Office: {associate.location}</li><li> Area: {associate.area}</li></ul>
 
             {this.props.cheese != undefined ? (  <form method="POST" action={"/associates/"+this.props.name}>
                  <input type="submit" className="btn btn-sm btn-outline-dark" href={"/associates/"+this.props.name+"/delete"} value = "Remove"></input>
                  <input type = "hidden" name="id_project[]"value={associate.id}></input>
                  <input type = "hidden" name="id_project[]"value={this.props.name}></input>
-             </form>) : (<br/>)}
+             </form>) : (<span></span>)}
 
                 <br/>
                 </div>
         })
 
-        let insufficient;
-        if (this.props.insufficient===true){
-            insufficient = <div className="alert alert-danger" role="alert">Sorry, insufficient associates to fulfil request.</div>
-        }
+        // let insufficient;
+        // if (this.props.insufficient===true){
+        //     insufficient = <div className="alert alert-danger" role="alert">Sorry, insufficient associates to fulfil request.</div>
+        // }
     }
 
     return (
@@ -65,21 +65,21 @@ class Project extends React.Component {
 
                 <h5>Partner:</h5>
                 <ol>
-                <li className="list-unstyled">{partnerName}</li>
+                <li className="list-unstyled lawyer">{partnerName}</li>
                 </ol>
 
 
                 <h5>Associates:</h5>
                 <ol>
                    <div>
-                 {this.props.cheese != undefined ? ( <form method="POST" action = {"/associates/" + this.props.name + "/auto"}><button type="submit" className="btn btn-danger" id="generateButt">Generate team</button><input name = "location" placeholder="office location" id="generateInput1" style={{textTransform: "capitalize"}} required></input><input name = "associates" placeholder="# of associates" id="generateInput2" required></input></form>) : (<br/>)}
+                 {this.props.cheese != undefined ? ( <form method="POST" action = {"/associates/" + this.props.name + "/auto"}><button type="submit" className="btn btn-danger" id="generateButt">Generate team</button><input name = "location" placeholder="office location" id="generateInput1" style={{textTransform: "capitalize"}} required></input><input name = "associates" placeholder="# of associates" id="generateInput2" required></input></form>) : (<span></span>)}
                  </div>
 
                     {associateList}
 
                 <div>
                 <br/>
-                 {this.props.cheese != undefined ? ( <form action = {"/associates/" + this.props.name}><button type="submit" className="btn btn-outline-danger"href={"/associates/" + this.props.name} id="addButt" disabled>Add team members</button></form>) : (<br/>)}
+                 {this.props.cheese != undefined ? ( <form action = {"/associates/" + this.props.name}><button type="submit" className="btn btn-outline-danger"href={"/associates/" + this.props.name} id="addButt" disabled>Add team members</button></form>) : (<span></span>)}
                  </div>
                    </ol>
                  <br/>
