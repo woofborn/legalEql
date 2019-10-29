@@ -56,7 +56,7 @@ module.exports = (db) => {
             console.log("CHEESE" + cheese)
 
                 if(request.cookies.cheese != undefined){
-                    response.send("You're not an associate...")
+                    response.render('nopartners')
 
                 } else if (request.cookies.loggedin===hashLogin){
 

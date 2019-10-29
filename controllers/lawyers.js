@@ -34,7 +34,7 @@ module.exports = (db) => {
 
                 })
             } else {
-                response.send("STOP TRYING TO SPY ON PARTNERS")
+                response.render('noassociates')
             }
         } else {
             const info ={
