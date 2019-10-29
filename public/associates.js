@@ -3,15 +3,15 @@ console.log("JS file connected MEOW!")
 
 var ctx = document.getElementById('myChart');
 console.log('PASSING INFOOOOOOOOOOOOO')
-projects = JSON.parse(projects)
+// projects = JSON.parse(projects)
 billables = JSON.parse(billables)
-console.log(projects)
+// console.log(projects)
 console.log(billables)
 
 
 let projectList=[];
-for (let i=0; i<projects.length; i++){
-    projectList.push(projects[i].project_name)
+for (let i=0; i<billables.length; i++){
+    projectList.push(billables[i].project_name)
 }
 
 let billed = []
