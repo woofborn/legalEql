@@ -8,7 +8,7 @@ module.exports = (db) => {
     }
 
     let loginControllerCallback = (request, response) => {
-        console.log(request.cookies.loggedin)
+
         response.render('login')
     };
 

@@ -13,11 +13,10 @@ module.exports = (db) => {
 
             if (request.cookies.loggedin === hashLogin && request.cookies.cheese === hashCheese){
                 db.lawyers.allProjects(request,(project)=>{
-                    console.log('PROJECT CALLBACK RESULTTSSSSSSSS')
-                    console.log(project)
+
 
                     db.lawyers.completeProjects(request,(completed)=>{
-                    console.log(completed)
+
 
 
                     const data = {
@@ -47,7 +46,7 @@ module.exports = (db) => {
      let newProjectControllerCallback = (request,response)=>{
 
             db.lawyers.newProject(request,(project)=>{
-                console.log(project)
+
                 if (project === null){
 
                       db.lawyers.allProjects(request,(name)=>{
@@ -67,14 +66,13 @@ module.exports = (db) => {
                       })
 
                 } else {
-                    console.log('NEW PROJECTTTTTTTT')
-                    console.log(project.id, project.name, project.description)
+
                     const info = {
                         id: project.id,
                         name: project.name,
 
                     }
-                    console.log(info)
+
                     response.redirect(`/projects/${project.name}`)
                 }
             })
@@ -85,8 +83,7 @@ module.exports = (db) => {
        let project = request.params.name
 
         db.lawyers.allTeam(project,(team)=>{
-            console.log('OMG TEAMAMAMAMAMAMAAM')
-            console.log(team)
+
             db.lawyers.showDescription(project,(project)=>{
 
                 const info = {
@@ -97,7 +94,7 @@ module.exports = (db) => {
                 project: project
             }
 
-        console.log(team, project)
+
          response.render('project', info)
         // response.send('you broke everything')
 
@@ -111,7 +108,7 @@ module.exports = (db) => {
 
         let projectName = request.params.projectname
          db.lawyers.associates(request,(associates)=>{
-                 console.log(associates)
+
                  const info = {
                     associates,
                     projectName
@@ -123,12 +120,11 @@ module.exports = (db) => {
     let addTeamControllerCallback = (request,response)=>{
 
         db.lawyers.addTeam(request,(team)=>{
-            console.log("!!!RETURNED FROM NULL?")
-            console.log(team)
+
             if (team === null){
                 // response.send ("you've already added this associate, dingbat")
                 let projectName = request.body.project_associateid[0]
-                console.log(request.params.projectname)
+
 
                 db.lawyers.associates(request,(associates)=>{
                  // response.send(associates)
@@ -156,7 +152,7 @@ module.exports = (db) => {
     let removeControllerCallback = (request,response)=>{
 
         db.lawyers.removeAssociate(request, (message)=>{
-            console.log(message);
+
             response.redirect("/projects/"+request.body.id_project[1])
         })
 
@@ -166,12 +162,9 @@ module.exports = (db) => {
 
     let completeControllerCallback = (request,response)=>{
         let projectName = request.params.name
-        console.log('BANANANANANANANA')
-        console.log(projectName)
+
 
         db.lawyers.complete(request, (message)=>{
-            console.log(message);
-            console.log("yay, completed")
 
 
 
@@ -181,7 +174,7 @@ module.exports = (db) => {
     }
 
     let autoControllerCallback = (request,response)=>{
-        console.log(request.body)
+
 
         db.lawyers.autoPop(request,(team)=>{
 

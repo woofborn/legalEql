@@ -8,15 +8,14 @@ module.exports = (dbPoolInstance) => {
 
         let user = request.body.username
         let pw = sha256(request.body.password + SALT)
-        console.log(request.body)
-        console.log(pw)
+
         let query = `SELECT * FROM associates WHERE username = '${user}' AND password = '${pw}'`;
-        console.log(query)
+
 
         dbPoolInstance.query(query,(err,result)=>{
 
             if (result.rows.length>0){
-                console.log(result.rows[0])
+
                 callback(null,result.rows[0])
             } else {
                 callback(null,null);
@@ -31,7 +30,7 @@ module.exports = (dbPoolInstance) => {
 
         dbPoolInstance.query(query,(err,result)=>{
              if (result.rows.length>0){
-                console.log(result.rows)
+
                 callback(null,result.rows)
             } else {
                 callback(null,null);
@@ -49,7 +48,7 @@ module.exports = (dbPoolInstance) => {
 
          dbPoolInstance.query(query,(err,result)=>{
              if (result.rows.length>0){
-                console.log(result.rows)
+
                 callback(null,result.rows)
             } else {
                 callback(null,null);
@@ -67,10 +66,10 @@ module.exports = (dbPoolInstance) => {
         let date = request.body.date;
 
         let array = [project, associate, hours, date]
-        console.log(array)
+
 
         let query = `INSERT INTO billables (project_name, associate_id, hours, updated) VALUES ($1, $2, $3, $4) RETURNING *`
-        console.log(query)
+
 
         dbPoolInstance.query(query,array,(err,result)=>{
             callback(null,result.rows[0])
@@ -86,7 +85,7 @@ module.exports = (dbPoolInstance) => {
         let query = `SELECT * from billables WHERE project_name = '${project}' AND associate_id = ${associate}`
          dbPoolInstance.query(query,(err,result)=>{
              if (result.rows.length>0){
-                console.log(result.rows)
+
                 callback(null,result.rows)
             } else {
                 callback(null,null);
@@ -102,7 +101,7 @@ module.exports = (dbPoolInstance) => {
 
         dbPoolInstance.query(query,(err,result)=>{
              if (result.rows.length>0){
-                console.log(result.rows)
+
                 callback(null,result.rows[0])
             } else {
                 callback(null,null);

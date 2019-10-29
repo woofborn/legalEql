@@ -36,8 +36,7 @@ module.exports = (db) => {
     }
 
     let apageControllerCallback = (request, response) => {
-        console.log('LOGGED IN COOKIES??????????')
-        console.log(request.cookies.loggedin)
+
 
         if (request.cookies.loggedin === undefined){
                 const info ={
@@ -53,7 +52,7 @@ module.exports = (db) => {
 
 
             let cheese = request.cookies.cheese
-            console.log("CHEESE" + cheese)
+
 
                 if(request.cookies.cheese != undefined){
                     response.render('nopartners')
@@ -71,7 +70,7 @@ module.exports = (db) => {
 
                                  let totalBilled = parseInt(apple.sum)
                                  let percentage = Math.floor(totalBilled/1900*100)
-                                 console.log(percentage)
+
 
                                 var info = {
                                 projects:result,
@@ -80,8 +79,7 @@ module.exports = (db) => {
                                 percentage,
                                 name,
                                 }
-                                console.log('ASSOCIATE DATAAAAAA')
-                                console.log(info)
+
                                      response.render('associatepage', info)
 
                                 })
@@ -114,13 +112,12 @@ module.exports = (db) => {
 
 
     let billableControllerCallback = (request,response)=>{
-        console.log("BILL BABY BILLLLLLLLLLLLL")
-        console.log(request.body)
+
 
 
         db.associates.addBillables(request,(err,result)=>{
             let dateString = result.updated.toString()
-            console.log(typeof dateString)
+
 
             db.associates.billableSummary(request,(err,banana)=>{
 
@@ -130,7 +127,7 @@ module.exports = (db) => {
                 date: dateString,
                 billables: banana,
             }
-                console.log(data)
+
 
             response.render('summary', data)
 
