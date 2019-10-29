@@ -68,21 +68,35 @@ module.exports = (db) => {
                                 if (banana!=null){
                                  db.associates.totalBillable(request,(err,apple)=>{
 
-                                 let totalBilled = parseInt(apple.sum)
-                                 let percentage = Math.floor(totalBilled/1900*100)
+                                     if (apple!=null){
+                                            let totalBilled = parseInt(apple.sum)
+                                         let percentage = Math.floor(totalBilled/1900*100)
 
 
-                                var info = {
-                                projects:result,
-                                billables: banana,
-                                total: apple,
-                                percentage,
-                                name,
-                                }
+                                        var info = {
+                                        projects:result,
+                                        billables: banana,
+                                        total: apple,
+                                        percentage,
+                                        name,
+                                        }
 
-                                     response.render('associatepage', info)
+                                             response.render('associatepage', info)
 
-                                })
+                                     }   else {
+                                            info = {
+                                            // none: true,
+                                            projects:result,
+                                            billables: banana,
+                                            total:apple,
+                                            name
+                                            }
+                                            console.log(info)
+                                             response.render('associatepage', info)
+                                        }
+
+
+                                    })
                                 } else {
                                 info = {
                                 // none: true,

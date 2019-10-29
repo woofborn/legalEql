@@ -93,7 +93,7 @@ class Associatepage extends React.Component {
         </div>
         </div>):(<br/>)}
 
-        {this.props.billables!=null? (<div style = {{marginTop:"5%"}}>
+        {this.props.billables!=null && this.props.total!=null? (<div style = {{marginTop:"5%"}}>
         <h3>Total Billed</h3>
         <div className="progress" style={{height:"40px"}}>
               <div className="progress-bar bartext" valuemin="0" valuemax="100"role="progressbar" style={{width: `${this.props.percentage}%`, fontSize:"1.4em"}}>

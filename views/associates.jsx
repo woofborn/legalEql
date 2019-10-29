@@ -50,10 +50,9 @@ class Associates extends React.Component {
             <div className="box">
               <h1>ASSOCIATES</h1>
                 <h2>Choose wisely.</h2>
+                 <h3>{selected}</h3>
             </div>
 
-                <h3>{selected}</h3>
-                <br/>
                 <div className="box">
                      <div className="row">
                          {associate}
