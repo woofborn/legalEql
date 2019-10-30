@@ -22,6 +22,7 @@ module.exports = (dbPoolInstance) => {
 
         let upper = titleCase(project);
 
+        //check if project name already taken
        let query = `SELECT * FROM projects WHERE name = '${upper}'`
 
 
@@ -46,7 +47,7 @@ module.exports = (dbPoolInstance) => {
         })
     }
 
-
+    //get all associates that aren't already assigned to 3 or more projects
     let associates = (request,callback)=>{
 
         let query = `SELECT associates.id, associates.aname,associates.area,associates.location FROM associates LEFT JOIN (SELECT result.id, count(result.id) FROM (SELECT associates.id, associates.aname,associates.area,associates.location, project_assignment.project_name FROM associates LEFT JOIN project_assignment ON (project_assignment.associate_id = associates.id)) AS result GROUP BY result.id ) as bigResult ON (bigResult.id = associates.id) WHERE bigResult.count<3`
@@ -58,13 +59,14 @@ module.exports = (dbPoolInstance) => {
         })
     }
 
-
+    //add associates to team
     let addTeam = (request,callback)=>{
 
         let project = request.body.project_associateid[0]
         let partner = request.cookies.id;
         let associate = request.body.project_associateid[1]
 
+        //check if that associate is already on your team
         let query = `SELECT * FROM project_assignment WHERE project_name = '${project}' AND associate_id = ${associate}`
 
 
@@ -86,7 +88,7 @@ module.exports = (dbPoolInstance) => {
     }
 
     let nameAssociate = (request,callback)=>{
-
+        //don't forget the associates name!
         let associate = request.body.project_associateid[1]
         let query = `SELECT associates.aname FROM associates INNER JOIN project_assignment ON (associates.id = project_assignment.associate_id) WHERE associates.id = ${associate}`
 
@@ -175,7 +177,7 @@ module.exports = (dbPoolInstance) => {
             callback("Guess the associate burned out")
         })
     }
-
+//autogenerate your team!
     let autoPop = (request,callback)=>{
 
         let location = request.body.location

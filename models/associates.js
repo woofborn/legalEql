@@ -3,14 +3,13 @@ const SALT = 'lawyers'
 
 module.exports = (dbPoolInstance) => {
 
-
+    //check associate login creds
     let verifyAssociate = (request,callback)=>{
 
         let user = request.body.username
         let pw = sha256(request.body.password + SALT)
 
         let query = `SELECT * FROM associates WHERE username = '${user}' AND password = '${pw}'`;
-
 
         dbPoolInstance.query(query,(err,result)=>{
 
@@ -23,6 +22,7 @@ module.exports = (dbPoolInstance) => {
         });
     }
 
+    //find active associate projects
     let associateProjects = (request,callback)=>{
         let id = request.cookies.id
 
@@ -40,7 +40,8 @@ module.exports = (dbPoolInstance) => {
 
     }
 
-       let projectBillable = (request,callback)=>{
+    //get billables per project
+   let projectBillable = (request,callback)=>{
         let id = request.cookies.id
 
         let query = `SELECT project_name, SUM(hours) FROM billables WHERE associate_id = ${id} GROUP BY project_name;   `
@@ -59,6 +60,7 @@ module.exports = (dbPoolInstance) => {
 
     }
 
+    //add new billable
     let addBillables = (request,callback)=>{
 
         let project = request.body.project;
@@ -78,6 +80,7 @@ module.exports = (dbPoolInstance) => {
 
     }
 
+    //show summary of entries for project
     let billableSummary = (request,callback)=>{
 
         let project = request.body.project
@@ -95,6 +98,7 @@ module.exports = (dbPoolInstance) => {
         })
     }
 
+    //calculate total billable
     let totalBillable = (request,callback)=>{
         let associate = request.cookies.id
 
